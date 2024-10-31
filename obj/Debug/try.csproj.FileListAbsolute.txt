@@ -1,0 +1,14 @@
+C:\Users\1385\source\repos\try\try\bin\Debug\@try.exe.config
+C:\Users\1385\source\repos\try\try\bin\Debug\@try.exe
+C:\Users\1385\source\repos\try\try\bin\Debug\@try.pdb
+C:\Users\1385\source\repos\try\try\obj\Debug\try.csproj.AssemblyReference.cache
+C:\Users\1385\source\repos\try\try\obj\Debug\try.csproj.CoreCompileInputs.cache
+C:\Users\1385\source\repos\try\try\obj\Debug\@try.exe
+C:\Users\1385\source\repos\try\try\obj\Debug\@try.pdb
+C:\Users\1385\source\repos\MyConsole\try\bin\Debug\@try.exe.config
+C:\Users\1385\source\repos\MyConsole\try\bin\Debug\@try.exe
+C:\Users\1385\source\repos\MyConsole\try\bin\Debug\@try.pdb
+C:\Users\1385\source\repos\MyConsole\try\obj\Debug\try.csproj.AssemblyReference.cache
+C:\Users\1385\source\repos\MyConsole\try\obj\Debug\try.csproj.CoreCompileInputs.cache
+C:\Users\1385\source\repos\MyConsole\try\obj\Debug\@try.exe
+C:\Users\1385\source\repos\MyConsole\try\obj\Debug\@try.pdb
