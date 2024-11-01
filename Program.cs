@@ -523,7 +523,7 @@ namespace @try
         {
             Console.Clear();
             Console.WriteLine("you have " + currency + " dollars");
-            Console.WriteLine("In the roulette wheel you chave a choice between red/black or number guessing. \nWith red/black you have a 50/50 chance of gaining double your bet if it lands on the guessed colour, or losing your bet.\nIn number guess, if your guessed number is whats landed on, you gain 4x your bet.");
+            Console.WriteLine("In the roulette wheel you chave a choice between red/black or number guessing. \nWith red/black you have a 50/50 chance of gaining double your bet if it lands on the guessed colour, or losing your bet.\nIn number guess, if your guessed number is whats landed on, you gain 5x your bet!!");
             Thread.Sleep(1000);
             Console.WriteLine("Do you want to play [red/black] or [number guess]?");
             string rwinput = Console.ReadLine();
@@ -576,27 +576,183 @@ namespace @try
                 Thread.Sleep(2000);
                 numberguess();
             }
-            Console.Clear();
-            Console.WriteLine("rolling table");
+
             Thread.Sleep(500);
             Console.Clear();
-            Console.WriteLine("rolling table.");
+            #region(rolling animation)
+            Console.WriteLine(@"        _________");
+            Console.WriteLine(@"     --/ 1__|__2 \--");
+            Console.WriteLine(@"   -   \_/     \_/   -");
+            Console.WriteLine(@"  | \ /-    0     \ / |");
+            Console.WriteLine(@" |8  /      |      \  3|");
+            Console.WriteLine(@" |--|  ()---H---()  |--|");
+            Console.WriteLine(@" |7  \      |      /  4|");
+            Console.WriteLine(@"  | / \__   0   __/ \ |");
+            Console.WriteLine(@"   -   / \_____/ \   -");
+            Console.WriteLine(@"     --\  6 | 5  /--");
+            Console.WriteLine(@"        ---------");
             Thread.Sleep(500);
             Console.Clear();
-            Console.WriteLine("rolling table..");
-            Thread.Sleep(500);
-            Console.Clear();
-            Console.WriteLine("rolling table...");
-            Thread.Sleep(500);
-            Console.Clear();
-            Console.WriteLine("rolling table");
-            Thread.Sleep(500);
-            Console.Clear();
-            Console.WriteLine("rolling table.");
-            Thread.Sleep(500);
-            Console.Clear();
-            Console.WriteLine("rolling table..");
-            Thread.Sleep(500);
+            for (int i = 0; i < 2; i++)
+            {
+                Console.WriteLine(@"        _________");
+                Console.WriteLine(@"     --/ 1__|__2 \--");
+                Console.WriteLine(@"   -   \_/     \_/   -");
+                Console.WriteLine(@"  | \ /-    0     \ / |");
+                Console.WriteLine(@" |8  /      |      \  3|");
+                Console.WriteLine(@" |--|  ()---H---()  |--|");
+                Console.WriteLine(@" |7  \      |      /  4|");
+                Console.WriteLine(@"  | / \__   0   __/ \ |");
+                Console.WriteLine(@"   -   / \_____/ \   -");
+                Console.WriteLine(@"     --\  6 | 5  /--");
+                Console.WriteLine(@"        ---------");
+                Thread.Sleep(250);
+                Console.Clear();
+                Console.WriteLine(@"        _________");
+                Console.WriteLine(@"     --/  __|__1 \--");
+                Console.WriteLine(@"   - 8 \_/     \_/ 2 -");
+                Console.WriteLine(@"  | \ /-    0     \ / |");
+                Console.WriteLine(@" |7  /      |      \   |");
+                Console.WriteLine(@" |--|  ()---H---()  |--|");
+                Console.WriteLine(@" |   \      |      /  3|");
+                Console.WriteLine(@"  | / \__   0   __/ \ |");
+                Console.WriteLine(@"   - 6 / \_____/ \ 4 -");
+                Console.WriteLine(@"     --\  5 |    /--");
+                Console.WriteLine(@"        ---------");
+                Thread.Sleep(250);
+                Console.Clear();
+                Console.WriteLine(@"        _________");
+                Console.WriteLine(@"     --/ 8__|__  \--");
+                Console.WriteLine(@"   - 7 \_/     \_/ 1 -");
+                Console.WriteLine(@"  | \ /-    0     \ / |");
+                Console.WriteLine(@" |   /      |      \  2|");
+                Console.WriteLine(@" |--|  ()---H---()  |--|");
+                Console.WriteLine(@" |6  \      |      /   |");
+                Console.WriteLine(@"  | / \__   0   __/ \ |");
+                Console.WriteLine(@"   - 5 / \_____/ \ 3 -");
+                Console.WriteLine(@"     --\    | 4  /--");
+                Console.WriteLine(@"        ---------");
+                Thread.Sleep(250);
+                Console.Clear();
+                Console.WriteLine(@"        _________");
+                Console.WriteLine(@"     --/ 7__|__8 \--");
+                Console.WriteLine(@"   -   \_/     \_/   -");
+                Console.WriteLine(@"  | \ /-    0     \ / |");
+                Console.WriteLine(@" |6  /      |      \  1|");
+                Console.WriteLine(@" |--|  ()---H---()  |--|");
+                Console.WriteLine(@" |5  \      |      /  2|");
+                Console.WriteLine(@"  | / \__   0   __/ \ |");
+                Console.WriteLine(@"   -   / \_____/ \   -");
+                Console.WriteLine(@"     --\  4 | 3  /--");
+                Console.WriteLine(@"        ---------");
+                Thread.Sleep(250);
+                Console.Clear();
+                Console.WriteLine(@"        _________");
+                Console.WriteLine(@"     --/  __|__7 \--");
+                Console.WriteLine(@"   - 6 \_/     \_/ 8 -");
+                Console.WriteLine(@"  | \ /-    0     \ / |");
+                Console.WriteLine(@" |5  /      |      \   |");
+                Console.WriteLine(@" |--|  ()---H---()  |--|");
+                Console.WriteLine(@" |   \      |      /  1|");
+                Console.WriteLine(@"  | / \__   0   __/ \ |");
+                Console.WriteLine(@"   - 4 / \_____/ \ 2 -");
+                Console.WriteLine(@"     --\  3 |    /--");
+                Console.WriteLine(@"        ---------");
+                Thread.Sleep(250);
+                Console.Clear();
+                Console.WriteLine(@"        _________");
+                Console.WriteLine(@"     --/ 6__|__  \--");
+                Console.WriteLine(@"   - 5 \_/     \_/ 7 -");
+                Console.WriteLine(@"  | \ /-    0     \ / |");
+                Console.WriteLine(@" |   /      |      \  8|");
+                Console.WriteLine(@" |--|  ()---H---()  |--|");
+                Console.WriteLine(@" |4  \      |      /   |");
+                Console.WriteLine(@"  | / \__   0   __/ \ |");
+                Console.WriteLine(@"   - 3 / \_____/ \ 1 -");
+                Console.WriteLine(@"     --\    | 2  /--");
+                Console.WriteLine(@"        ---------");
+                Thread.Sleep(250);
+                Console.Clear();
+                Console.WriteLine(@"        _________");
+                Console.WriteLine(@"     --/ 5__|__6 \--");
+                Console.WriteLine(@"   -   \_/     \_/   -");
+                Console.WriteLine(@"  | \ /-    0     \ / |");
+                Console.WriteLine(@" |4  /      |      \  7|");
+                Console.WriteLine(@" |--|  ()---H---()  |--|");
+                Console.WriteLine(@" |3  \      |      /  8|");
+                Console.WriteLine(@"  | / \__   0   __/ \ |");
+                Console.WriteLine(@"   -   / \_____/ \   -");
+                Console.WriteLine(@"     --\  2 | 1  /--");
+                Console.WriteLine(@"        ---------");
+                Thread.Sleep(250);
+                Console.Clear();
+                Console.WriteLine(@"        _________");
+                Console.WriteLine(@"     --/  __|__5 \--");
+                Console.WriteLine(@"   - 4 \_/     \_/ 6 -");
+                Console.WriteLine(@"  | \ /-    0     \ / |");
+                Console.WriteLine(@" |3  /      |      \   |");
+                Console.WriteLine(@" |--|  ()---H---()  |--|");
+                Console.WriteLine(@" |  \       |     /   7|");
+                Console.WriteLine(@"  | / \__   0   __/ \ |");
+                Console.WriteLine(@"   - 2 / \_____/ \ 8 -");
+                Console.WriteLine(@"     --\  1 |    /--");
+                Console.WriteLine(@"        ---------");
+                Thread.Sleep(250);
+                Console.Clear();
+                Console.WriteLine(@"        _________");
+                Console.WriteLine(@"     --/ 4__|__  \--");
+                Console.WriteLine(@"   - 3 \_/     \_/ 5 -");
+                Console.WriteLine(@"  | \ /-    0     \ / |");
+                Console.WriteLine(@" |   /      |      \  6|");
+                Console.WriteLine(@" |--|  ()---H---()  |--|");
+                Console.WriteLine(@" |2 \       |     /    |");
+                Console.WriteLine(@"  | / \__   0   __/ \ |");
+                Console.WriteLine(@"   - 1 / \_____/ \ 7 -");
+                Console.WriteLine(@"     --\    | 8  /--");
+                Console.WriteLine(@"        ---------");
+                Thread.Sleep(250);
+                Console.Clear();
+                Console.WriteLine(@"        _________");
+                Console.WriteLine(@"     --/ 3__|__4 \--");
+                Console.WriteLine(@"   -   \_/     \_/   -");
+                Console.WriteLine(@"  | \ /-    0     \ / |");
+                Console.WriteLine(@" |2  /      |      \  5|");
+                Console.WriteLine(@" |--|  ()---H---()  |--|");
+                Console.WriteLine(@" |1 \       |     /   6|");
+                Console.WriteLine(@"  | / \__   0   __/ \ |");
+                Console.WriteLine(@"   -   / \_____/ \   -");
+                Console.WriteLine(@"     --\  8 | 7  /--");
+                Console.WriteLine(@"        ---------");
+                Thread.Sleep(250);
+                Console.Clear();
+                Console.WriteLine(@"        _________");
+                Console.WriteLine(@"     --/  __|__3 \--");
+                Console.WriteLine(@"   - 2 \_/     \_/ 4 -");
+                Console.WriteLine(@"  | \ /-    0     \ / |");
+                Console.WriteLine(@" |1  /      |      \   |");
+                Console.WriteLine(@" |--|  ()---H---()  |--|");
+                Console.WriteLine(@" |  \       |     /   5|");
+                Console.WriteLine(@"  | / \__   0   __/ \ |");
+                Console.WriteLine(@"   - 8 / \_____/ \ 6 -");
+                Console.WriteLine(@"     --\  7 |    /--");
+                Console.WriteLine(@"        ---------");
+                Thread.Sleep(250);
+                Console.Clear();
+                Console.WriteLine(@"        _________");
+                Console.WriteLine(@"     --/ 2__|__  \--");
+                Console.WriteLine(@"   - 1 \_/     \_/ 3 -");
+                Console.WriteLine(@"  | \ /-    0     \ / |");
+                Console.WriteLine(@" |   /      |      \  4|");
+                Console.WriteLine(@" |--|  ()---H---()  |--|");
+                Console.WriteLine(@" |8 \       |     /    |");
+                Console.WriteLine(@"  | / \__   0   __/ \ |");
+                Console.WriteLine(@"   - 7 / \_____/ \ 5 -");
+                Console.WriteLine(@"     --\    | 6  /--");
+                Console.WriteLine(@"        ---------");
+                Thread.Sleep(250);
+                Console.Clear();
+            }
+            #endregion
             Random rtRollNumber = new Random();
             int rtnumber = rtRollNumber.Next(1, 7);
 
@@ -604,8 +760,8 @@ namespace @try
             {
                     Console.Clear();
                     Console.WriteLine("It landed on your number! CONGRATS YOU WON!");
-                    Console.WriteLine("Your balance changed from " + currency + " to " + (currency +(betNumInt* 4)) + "!");
-                    currency = currency+(betNumInt * 4);
+                    Console.WriteLine("Your balance changed from " + currency + " to " + (currency +(betNumInt* 5)) + "!");
+                    currency = currency+(betNumInt * 5);
                     Thread.Sleep(2000);
             }
             else
@@ -668,26 +824,180 @@ namespace @try
                 redblack();
             }
             Console.Clear();
-            Console.WriteLine("rolling table");
+            #region(rolling animation)
+            Console.WriteLine(@"        _________");
+            Console.WriteLine(@"     --/ 1__|__2 \--");
+            Console.WriteLine(@"   -   \_/     \_/   -");
+            Console.WriteLine(@"  | \ /-    0     \ / |");
+            Console.WriteLine(@" |8  /      |      \  3|");
+            Console.WriteLine(@" |--|  ()---H---()  |--|");
+            Console.WriteLine(@" |7  \      |      /  4|");
+            Console.WriteLine(@"  | / \__   0   __/ \ |");
+            Console.WriteLine(@"   -   / \_____/ \   -");
+            Console.WriteLine(@"     --\  6 | 5  /--");
+            Console.WriteLine(@"        ---------");
             Thread.Sleep(500);
             Console.Clear();
-            Console.WriteLine("rolling table.");
-            Thread.Sleep(500);
-            Console.Clear();
-            Console.WriteLine("rolling table..");
-            Thread.Sleep(500);
-            Console.Clear();
-            Console.WriteLine("rolling table...");
-            Thread.Sleep(500);
-            Console.Clear();
-            Console.WriteLine("rolling table");
-            Thread.Sleep(500);
-            Console.Clear();
-            Console.WriteLine("rolling table.");
-            Thread.Sleep(500);
-            Console.Clear();
-            Console.WriteLine("rolling table..");
-            Thread.Sleep(500);
+            for (int i = 0; i < 2; i++)
+            {
+                Console.WriteLine(@"        _________");
+                Console.WriteLine(@"     --/ 1__|__2 \--");
+                Console.WriteLine(@"   -   \_/     \_/   -");
+                Console.WriteLine(@"  | \ /-    0     \ / |");
+                Console.WriteLine(@" |8  /      |      \  3|");
+                Console.WriteLine(@" |--|  ()---H---()  |--|");
+                Console.WriteLine(@" |7  \      |      /  4|");
+                Console.WriteLine(@"  | / \__   0   __/ \ |");
+                Console.WriteLine(@"   -   / \_____/ \   -");
+                Console.WriteLine(@"     --\  6 | 5  /--");
+                Console.WriteLine(@"        ---------");
+                Thread.Sleep(250);
+                Console.Clear();
+                Console.WriteLine(@"        _________");
+                Console.WriteLine(@"     --/  __|__1 \--");
+                Console.WriteLine(@"   - 8 \_/     \_/ 2 -");
+                Console.WriteLine(@"  | \ /-    0     \ / |");
+                Console.WriteLine(@" |7  /      |      \   |");
+                Console.WriteLine(@" |--|  ()---H---()  |--|");
+                Console.WriteLine(@" |   \      |      /  3|");
+                Console.WriteLine(@"  | / \__   0   __/ \ |");
+                Console.WriteLine(@"   - 6 / \_____/ \ 4 -");
+                Console.WriteLine(@"     --\  5 |    /--");
+                Console.WriteLine(@"        ---------");
+                Thread.Sleep(250);
+                Console.Clear();
+                Console.WriteLine(@"        _________");
+                Console.WriteLine(@"     --/ 8__|__  \--");
+                Console.WriteLine(@"   - 7 \_/     \_/ 1 -");
+                Console.WriteLine(@"  | \ /-    0     \ / |");
+                Console.WriteLine(@" |   /      |      \  2|");
+                Console.WriteLine(@" |--|  ()---H---()  |--|");
+                Console.WriteLine(@" |6  \      |      /   |");
+                Console.WriteLine(@"  | / \__   0   __/ \ |");
+                Console.WriteLine(@"   - 5 / \_____/ \ 3 -");
+                Console.WriteLine(@"     --\    | 4  /--");
+                Console.WriteLine(@"        ---------");
+                Thread.Sleep(250);
+                Console.Clear();
+                Console.WriteLine(@"        _________");
+                Console.WriteLine(@"     --/ 7__|__8 \--");
+                Console.WriteLine(@"   -   \_/     \_/   -");
+                Console.WriteLine(@"  | \ /-    0     \ / |");
+                Console.WriteLine(@" |6  /      |      \  1|");
+                Console.WriteLine(@" |--|  ()---H---()  |--|");
+                Console.WriteLine(@" |5  \      |      /  2|");
+                Console.WriteLine(@"  | / \__   0   __/ \ |");
+                Console.WriteLine(@"   -   / \_____/ \   -");
+                Console.WriteLine(@"     --\  4 | 3  /--");
+                Console.WriteLine(@"        ---------");
+                Thread.Sleep(250);
+                Console.Clear();
+                Console.WriteLine(@"        _________");
+                Console.WriteLine(@"     --/  __|__7 \--");
+                Console.WriteLine(@"   - 6 \_/     \_/ 8 -");
+                Console.WriteLine(@"  | \ /-    0     \ / |");
+                Console.WriteLine(@" |5  /      |      \   |");
+                Console.WriteLine(@" |--|  ()---H---()  |--|");
+                Console.WriteLine(@" |   \      |      /  1|");
+                Console.WriteLine(@"  | / \__   0   __/ \ |");
+                Console.WriteLine(@"   - 4 / \_____/ \ 2 -");
+                Console.WriteLine(@"     --\  3 |    /--");
+                Console.WriteLine(@"        ---------");
+                Thread.Sleep(250);
+                Console.Clear();
+                Console.WriteLine(@"        _________");
+                Console.WriteLine(@"     --/ 6__|__  \--");
+                Console.WriteLine(@"   - 5 \_/     \_/ 7 -");
+                Console.WriteLine(@"  | \ /-    0     \ / |");
+                Console.WriteLine(@" |   /      |      \  8|");
+                Console.WriteLine(@" |--|  ()---H---()  |--|");
+                Console.WriteLine(@" |4  \      |      /   |");
+                Console.WriteLine(@"  | / \__   0   __/ \ |");
+                Console.WriteLine(@"   - 3 / \_____/ \ 1 -");
+                Console.WriteLine(@"     --\    | 2  /--");
+                Console.WriteLine(@"        ---------");
+                Thread.Sleep(250);
+                Console.Clear();
+                Console.WriteLine(@"        _________");
+                Console.WriteLine(@"     --/ 5__|__6 \--");
+                Console.WriteLine(@"   -   \_/     \_/   -");
+                Console.WriteLine(@"  | \ /-    0     \ / |");
+                Console.WriteLine(@" |4  /      |      \  7|");
+                Console.WriteLine(@" |--|  ()---H---()  |--|");
+                Console.WriteLine(@" |3  \      |      /  8|");
+                Console.WriteLine(@"  | / \__   0   __/ \ |");
+                Console.WriteLine(@"   -   / \_____/ \   -");
+                Console.WriteLine(@"     --\  2 | 1  /--");
+                Console.WriteLine(@"        ---------");
+                Thread.Sleep(250);
+                Console.Clear();
+                Console.WriteLine(@"        _________");
+                Console.WriteLine(@"     --/  __|__5 \--");
+                Console.WriteLine(@"   - 4 \_/     \_/ 6 -");
+                Console.WriteLine(@"  | \ /-    0     \ / |");
+                Console.WriteLine(@" |3  /      |      \   |");
+                Console.WriteLine(@" |--|  ()---H---()  |--|");
+                Console.WriteLine(@" |  \       |     /   7|");
+                Console.WriteLine(@"  | / \__   0   __/ \ |");
+                Console.WriteLine(@"   - 2 / \_____/ \ 8 -");
+                Console.WriteLine(@"     --\  1 |    /--");
+                Console.WriteLine(@"        ---------");
+                Thread.Sleep(250);
+                Console.Clear();
+                Console.WriteLine(@"        _________");
+                Console.WriteLine(@"     --/ 4__|__  \--");
+                Console.WriteLine(@"   - 3 \_/     \_/ 5 -");
+                Console.WriteLine(@"  | \ /-    0     \ / |");
+                Console.WriteLine(@" |   /      |      \  6|");
+                Console.WriteLine(@" |--|  ()---H---()  |--|");
+                Console.WriteLine(@" |2 \       |     /    |");
+                Console.WriteLine(@"  | / \__   0   __/ \ |");
+                Console.WriteLine(@"   - 1 / \_____/ \ 7 -");
+                Console.WriteLine(@"     --\    | 8  /--");
+                Console.WriteLine(@"        ---------");
+                Thread.Sleep(250);
+                Console.Clear();
+                Console.WriteLine(@"        _________");
+                Console.WriteLine(@"     --/ 3__|__4 \--");
+                Console.WriteLine(@"   -   \_/     \_/   -");
+                Console.WriteLine(@"  | \ /-    0     \ / |");
+                Console.WriteLine(@" |2  /      |      \  5|");
+                Console.WriteLine(@" |--|  ()---H---()  |--|");
+                Console.WriteLine(@" |1 \       |     /   6|");
+                Console.WriteLine(@"  | / \__   0   __/ \ |");
+                Console.WriteLine(@"   -   / \_____/ \   -");
+                Console.WriteLine(@"     --\  8 | 7  /--");
+                Console.WriteLine(@"        ---------");
+                Thread.Sleep(250);
+                Console.Clear();
+                Console.WriteLine(@"        _________");
+                Console.WriteLine(@"     --/  __|__3 \--");
+                Console.WriteLine(@"   - 2 \_/     \_/ 4 -");
+                Console.WriteLine(@"  | \ /-    0     \ / |");
+                Console.WriteLine(@" |1  /      |      \   |");
+                Console.WriteLine(@" |--|  ()---H---()  |--|");
+                Console.WriteLine(@" |  \       |     /   5|");
+                Console.WriteLine(@"  | / \__   0   __/ \ |");
+                Console.WriteLine(@"   - 8 / \_____/ \ 6 -");
+                Console.WriteLine(@"     --\  7 |    /--");
+                Console.WriteLine(@"        ---------");
+                Thread.Sleep(250);
+                Console.Clear();
+                Console.WriteLine(@"        _________");
+                Console.WriteLine(@"     --/ 2__|__  \--");
+                Console.WriteLine(@"   - 1 \_/     \_/ 3 -");
+                Console.WriteLine(@"  | \ /-    0     \ / |");
+                Console.WriteLine(@" |   /      |      \  4|");
+                Console.WriteLine(@" |--|  ()---H---()  |--|");
+                Console.WriteLine(@" |8 \       |     /    |");
+                Console.WriteLine(@"  | / \__   0   __/ \ |");
+                Console.WriteLine(@"   - 7 / \_____/ \ 5 -");
+                Console.WriteLine(@"     --\    | 6  /--");
+                Console.WriteLine(@"        ---------");
+                Thread.Sleep(250);
+                Console.Clear();
+            }
+            #endregion
             Random rtRollNumber = new Random();
             int rtnumber = rtRollNumber.Next(1, 3);
             if (rtnumber == 1)
@@ -1999,7 +2309,7 @@ namespace @try
 
             //return cooldown;
         }
-
+        
         private static void diceRoll()
         {
 
@@ -2547,28 +2857,6 @@ namespace @try
 
 
 
-        //        _________
-        //     ---         ---
-        //   -                 -
-        //  |                   |
-        // |                     |
-        // |                     |
-        // |                     |
-        //  |                   |
-        //   -                 -
-        //     ---         ---
-        //        ---------
-        //        _________
-        //     ---         ---
-        //   -                 -
-        //  |                   |
-        // |                     |
-        // |                     |
-        // |                     |
-        //  |                   |
-        //   -                 -
-        //     ---         ---
-        //        ---------
 
     }
 }
