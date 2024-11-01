@@ -54,6 +54,7 @@ namespace @try
 
         static void Main(string[] args)
         {
+            Console.ForegroundColor = ConsoleColor.Yellow;
             Script();
 
         }
@@ -271,6 +272,7 @@ namespace @try
 
         private static void option1()
         {
+            Console.ForegroundColor = ConsoleColor.Yellow;
             Console.Clear();
             Console.WriteLine("                                                    balance: $" + currency);
             Console.WriteLine("what would you like to do?");
@@ -350,6 +352,7 @@ namespace @try
 
         private static void gambleSelect()
         {
+            Console.ForegroundColor = ConsoleColor.Red;
             Console.Clear();
             Console.WriteLine("                                                    balance: $" + currency);
             Console.WriteLine("1. Roulette Wheel");
@@ -1331,6 +1334,7 @@ namespace @try
 
         private static void gameSelect(string todo)
         {
+            Console.ForegroundColor = ConsoleColor.Cyan;
             Console.Clear();
             Console.WriteLine("What game would you like to play?");
             Console.WriteLine("1. Guess the number");
@@ -1602,6 +1606,7 @@ namespace @try
 
         private static void dash()
         {
+            Console.ForegroundColor = ConsoleColor.White;
             Console.Clear();
             Console.WriteLine("Do you want to play with Powerups active? [Yes] or [No]");
             userpowerupinput = Console.ReadLine();
