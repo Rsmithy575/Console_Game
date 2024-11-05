@@ -22,7 +22,7 @@ namespace @try
         static int wait = 12;
         static int gameSpeed = 88;
         static int dashScore = 0;
-        static string password = "pass";
+        //static string password = "pass";
         static int powerSpeed = 0;
         static int timeSlowLine = 1000;
         static int powerMilis = 800;
@@ -49,8 +49,135 @@ namespace @try
         static string userDrawing = "";
         static string drawuserinput = "";
         static string drawlinebefore = "";
-        static int currency = 100;
+        static int currency = 10000;
+
+        #region(halloween set)
+        static string pumpkin = @"
+  _||_  
+ //++\\
+|| || ||
+ \\__//";
+        static int pumpkincount;
+        static string rare_pumpkin = @"
+  __||__   
+ / _  _ \
+| / \/ \ |  
+ \__UU__/";
+        static int rare_pumpkincount;
+        static string exotic_pumpkin= @"
+ /=\  _||_  /=\
+/ /\\/|\/|\//\ \
+VV _|| VV ||_  VV
+  / /\\__//\ \
+  VV        VV";
+        static int exotic_pumpkincount;
+        static string skull = @"
+ _--_
+|()()|
+\ /\ /
+ ||||";
+        static int skullcount;
+        static string spider = @"
+_    _
+ \||/
+==[]==
+_/()\_";
+        static int spidercount;
+        static string candle = @"
+  {}
+ |--|
+ | 6|
+/|__|_";
+        static int candlecount;
         #endregion
+
+        #region(gaming set)
+        static string imposter = @"
+  ___
+_| (__)
+||   |
+ |_|_|";
+        static int impostercount;
+        static string spooktuber=@"
+  _==_
+ //--\\
+[|0 .0|]
+ \\--//";
+        static int spooktubercount;
+        static string lil_cat = @"
+|\---/|
+/ *w* \
+\__ __/
+ ||-||";
+        static int lil_catcount;
+        static string rare_cat=@"
+  |\---/|
+/=/ owo \=\
+|)\__ __/(|
+UU ||-|| UU";
+        static int rare_catcount;
+        static string exotic_cat=@"
+     I
+  |\_I_/|
+/=/ 0w0 \=\
+|)\__ __/(|
+VV ||-|| VV";
+        static int exotic_catcount;
+        static string herobrine=@"
+ ______
+|_----_|
+|==__==|
+|_[==]_|";
+        static int herobrinecount;
+        #endregion
+
+        #region(mystic set)
+        static string potion = @"
+ ([])
+  ||
+ /__\
+(. Oo)
+ \0_/";
+        static int potioncount;
+        static string dragonegg = @"
+  ___ 
+ /UUU\
+|UUUUU|
+ \UUU/";
+        static int dragoneggcount;
+        static string crystal = @"
+   /\\
+/\ |||
+| \|||/\
+ \|_||_/";
+        static int crystalcount;
+        static string castle = @"
+      -_-_-
+      \___/
+      |   |
+      | _ |
+      ||_||";
+        static int castlecount;
+        static string rarecastle = @"
+         -_-_-
+         \___/
+   _-_   |   |   _-_
+   | |-_-| _ |-_-| |
+   |=|___||_||___|=|";
+        static int rarecastlecount;
+        static string exoticcastle = @"
+          =_=_=
+   ()     \___/     ()
+  =__=    | _ |    =__=
+  |[]|-_-_||_||_-_-|[]|
+  |  | [] | _ | [] |  |
+  |==|____||_||____|==|";
+        static int exoticcastlecount;
+
+
+        #endregion
+
+        #endregion(variables)
 
         static void Main(string[] args)
         {
@@ -58,6 +185,7 @@ namespace @try
             Script();
 
         }
+        #region(Dash)
         static void imDead()
         {
             if (ghost == false)
@@ -167,26 +295,737 @@ namespace @try
                 }
             }
         }
-
-        private static void Script()
+        private static void dash()
         {
-            
-            Console.Write("input password: ");
-            String input = Console.ReadLine();
-
-            if (input == password)
+            Console.ForegroundColor = ConsoleColor.White;
+            Console.Clear();
+            Console.WriteLine("Do you want to play with Powerups active? [Yes] or [No]");
+            userpowerupinput = Console.ReadLine();
+            if (userpowerupinput == "yes" || userpowerupinput == "Yes")
+                Console.WriteLine("Press [Q],[W],[E],[R] to jump in acordance to corresponding situations.\n3,2,1 = [Q]\n3,1,2 = [W]\n3,2,I = [E]\n1,2,3 = [R]\nPowerups: Press space when a powerup symbol appears to activate\nGhostMode-for a short time survive if you hit a spike\nTimeSlow-for a short time, slow down the rate of the game\nRefresh-up to 2 refresh can be collected, if you press space when jumping it will consume 1 refresh and succeed the jump\nYou receive $5 for every completed jump.\n[enter] to start!");
+            else if (userpowerupinput == "No" || userpowerupinput == "no")
+                Console.WriteLine("Press [Q],[W],[E],[R] to jump in acordance to corresponding situations.\n3,2,1 = [Q]\n3,1,2 = [W]\n3,2,I = [E]\n1,2,3 = [R]\nYou receive $5 for every completed jump.\n[enter] to start!");
+            else
             {
-                Console.WriteLine("Access Granted");
-                option1();
+                Console.WriteLine("Invalid input");
+                Thread.Sleep(1000);
+                dash();
+            }
+            int startInput = Console.Read();
+            bool spike = false;
+            Random dashrng = new Random();
+            int type = 0;
+
+            milis = 450;
+            line = 0;
+            wait = 12;
+            gameSpeed = 88;
+            dashScore = 0;
+            powerSpeed = 0;
+            timeSlowLine = 1000;
+            powerMilis = 800;
+            ghost = false;
+            ghostLine = 1000;
+            timeSlowRT = 0;
+            refreshCount = 0;
+
+
+
+
+            if (startInput == 13)
+            {
+
+                for (dashTime = 0; dashTime < 1550; dashTime++)
+                {
+
+                    if (Console.KeyAvailable)
+                    {
+
+
+
+                        var key = Console.ReadKey(intercept: true).Key;
+                        if (key == ConsoleKey.Q)
+                        {
+                            if (cooldown > 10)
+                            {
+                                Console.WriteLine(@"===");
+                                Console.WriteLine(@"   ===");
+                                Console.WriteLine(@"      ==");
+                                Thread.Sleep(gameSpeed + timeSlowRT);
+                                Console.WriteLine(@"        \\");
+                                Console.WriteLine(@"          =");
+                                Console.WriteLine(@"           \\");
+                                Console.WriteLine(@"            ||");
+                                Thread.Sleep(gameSpeed + timeSlowRT);
+                                Console.WriteLine(@"           //");
+                                Console.WriteLine(@"          =");
+                                Console.WriteLine(@"        //");
+                                Thread.Sleep(gameSpeed + timeSlowRT);
+                                Console.WriteLine(@"      ==");
+                                Console.WriteLine(@"   ===");
+                                Console.WriteLine(@"===");
+
+                                cooldown = 0;
+                            }
+                        }
+                        else if (key == ConsoleKey.W)
+                        {
+                            if (cooldown > 10)
+                            {
+                                Console.WriteLine(@"===");
+                                Console.WriteLine(@"   ===");
+                                Console.WriteLine(@"      ==");
+                                Thread.Sleep(gameSpeed + timeSlowRT);
+                                Console.WriteLine(@"        \\");
+                                Console.WriteLine(@"          =");
+                                Console.WriteLine(@"           \\");
+                                Console.WriteLine(@"            ||");
+                                Thread.Sleep(gameSpeed + timeSlowRT);
+                                Console.WriteLine(@"           //");
+                                Console.WriteLine(@"          =");
+                                Console.WriteLine(@"        //");
+                                Thread.Sleep(gameSpeed + timeSlowRT);
+                                Console.WriteLine(@"      ==");
+                                Console.WriteLine(@"   ===");
+                                Console.WriteLine(@"===");
+                                cooldown = 0;
+                            }
+
+                        }
+                        else if (key == ConsoleKey.E)
+                        {
+                            if (cooldown > 10)
+                            {
+                                Console.WriteLine(@"===");
+                                Console.WriteLine(@"   ===");
+                                Console.WriteLine(@"      ==");
+                                Thread.Sleep(gameSpeed + timeSlowRT);
+                                Console.WriteLine(@"        \\");
+                                Console.WriteLine(@"          =");
+                                Console.WriteLine(@"           \\");
+                                Console.WriteLine(@"            ||");
+                                Thread.Sleep(gameSpeed + timeSlowRT);
+                                Console.WriteLine(@"           //");
+                                Console.WriteLine(@"          =");
+                                Console.WriteLine(@"        //");
+                                Thread.Sleep(gameSpeed + timeSlowRT);
+                                Console.WriteLine(@"      ==");
+                                Console.WriteLine(@"   ===");
+                                Console.WriteLine(@"===");
+                                cooldown = 0;
+                            }
+
+                        }
+                        else if (key == ConsoleKey.R)
+                        {
+                            if (cooldown > 10)
+                            {
+                                Console.WriteLine(@"===");
+                                Console.WriteLine(@"   ===");
+                                Console.WriteLine(@"      ==");
+                                Thread.Sleep(gameSpeed + timeSlowRT);
+                                Console.WriteLine(@"        \\");
+                                Console.WriteLine(@"          =");
+                                Console.WriteLine(@"           \\");
+                                Console.WriteLine(@"            ||");
+                                Thread.Sleep(gameSpeed + timeSlowRT);
+                                Console.WriteLine(@"           //");
+                                Console.WriteLine(@"          =");
+                                Console.WriteLine(@"        //");
+                                Thread.Sleep(gameSpeed + timeSlowRT);
+                                Console.WriteLine(@"      ==");
+                                Console.WriteLine(@"   ===");
+                                Console.WriteLine(@"===");
+                                cooldown = 0;
+                            }
+
+                        }
+                        else
+                        {
+
+                        }
+
+
+                    }
+                    else
+                    {
+                        if (refreshCount == 0)
+                        {
+                            Console.WriteLine("||\n||");
+                        }
+                        else if (refreshCount == 1)
+                        {
+                            Console.WriteLine("||\n||.");
+                        }
+                        else if (refreshCount == 2)
+                        {
+                            Console.WriteLine("||\n||..");
+                        }
+
+                    }
+
+                    Thread.Sleep(gameSpeed - extraSpeed);
+                    Thread.Sleep(powerSpeed);
+                    cooldown++;
+                    if (userpowerupinput == "yes" || userpowerupinput == "Yes")
+                    {
+                        int powerChance = dashrng.Next(1, 150);
+                        if (powerChance == 1)
+                        {
+                            int powerUp = dashrng.Next(1, 5);
+                            if (powerUp == 1)
+                            {
+                                Console.WriteLine(@"||                      __--__");
+                                Console.WriteLine(@"||                     |.'  /.|");
+                                Console.WriteLine(@"||                    | ' () ' |");
+                                Console.WriteLine(@"||                     |'. |.'|");
+                                Console.WriteLine(@"||                      --__--");
+                                Thread.Sleep(powerMilis);
+                                if (Console.KeyAvailable)
+                                {
+                                    var key = Console.ReadKey(intercept: true).Key;
+                                    if (key == ConsoleKey.Spacebar)
+                                    {
+                                        {
+                                            timeSlowLine = dashTime;
+                                            powerSpeed = 200;
+                                            Console.WriteLine("TimeSlow activated");
+                                            Thread.Sleep(300);
+                                            timeSlowRT = 200;
+                                        }
+                                    }
+                                }
+
+                            }
+                            else if (powerUp == 2)
+                            {
+                                Console.WriteLine(@"||                     _--_");
+                                Console.WriteLine(@"||                    / 00 \ ");
+                                Console.WriteLine(@"||                    | o  |");
+                                Console.WriteLine(@"||                    |/\/\|");
+                                Thread.Sleep(powerMilis);
+                                if (Console.KeyAvailable)
+                                {
+                                    var key = Console.ReadKey(intercept: true).Key;
+                                    if (key == ConsoleKey.Spacebar)
+                                    {
+                                        {
+                                            ghostLine = dashTime;
+                                            ghost = true;
+                                            Console.WriteLine("GhostMode activated");
+                                            Thread.Sleep(500);
+                                        }
+                                    }
+                                }
+                            }
+                            else if (powerUp == 3 || powerUp == 4)
+                            {
+                                Console.WriteLine(@"||                   . () 0 ");
+                                Console.WriteLine(@"||                     .O 'o ");
+                                Console.WriteLine(@"||                    o _--_ ");
+                                Console.WriteLine(@"||                     |-__-|");
+                                Console.WriteLine(@"||                      -__- ");
+                                Thread.Sleep(powerMilis);
+                                if (Console.KeyAvailable)
+                                {
+                                    var key = Console.ReadKey(intercept: true).Key;
+                                    if (key == ConsoleKey.Spacebar)
+                                    {
+                                        {
+                                            if (refreshCount < 2)
+                                            {
+                                                Console.WriteLine("Refresh added");
+                                                refreshCount++;
+                                            }
+                                            else
+                                            {
+                                                Console.WriteLine("Maximum refresh held");
+                                            }
+
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                        if (dashTime == (timeSlowLine + 30))
+                        {
+                            Console.WriteLine("TimeSlow speeding up");
+                            powerSpeed = 150;
+                            timeSlowRT = 150;
+                        }
+                        if (dashTime == (timeSlowLine + 35))
+                        {
+                            powerSpeed = 100;
+                            timeSlowRT = 100;
+                        }
+                        if (dashTime == (timeSlowLine + 40))
+                        {
+                            powerSpeed = 50;
+                            timeSlowRT = 50;
+                        }
+                        if (dashTime == (timeSlowLine + 45))
+                        {
+                            powerSpeed = 0;
+                            timeSlowRT = 0;
+                        }
+                        if (dashTime == (ghostLine + 50))
+                        {
+                            if (ghost == true)
+                            {
+
+                                ghost = false;
+                                Console.WriteLine("GhostMode ending");
+
+                            }
+                        }
+                    }
+
+
+
+                    if (dashTime == 20)
+                    {
+                        line = 20;
+                        spike = true;
+                        spikeavail = false;
+                    }
+                    if (spikeavail == true)
+                    {
+                        spikeavail = false;
+                        spikeactive = true;
+                        spikeline = dashTime;
+                    }
+                    if (spikeactive == true)
+                    {
+                        if (dashTime == spikeline + wait)
+                        {
+                            spikeactive = false;
+                            line = dashTime;
+                        }
+                    }
+                    if (dashTime > 800)
+                    {
+                        Console.WriteLine(@" ==  ==  =====  ==  ==     ==    == == ==  ==");
+                        Console.WriteLine(@"  \\//  //   \\ ||  ||     ||    || || ||\ ||");
+                        Console.WriteLine(@"   ||   ||   || ||  ||     || /\ || || ||\\||");
+                        Console.WriteLine(@"   ||   \\   // \\  //     ||//\\|| || || \||");
+                        Console.WriteLine(@"   ==    =====   ====      ===  === == ==  ==");
+                        dashTime = 800;
+                        Console.WriteLine("your Dash score was, " + dashScore + "!");
+                        Thread.Sleep(1000);
+                        dashScoreVoid();
+                        Thread.Sleep(1000);
+                        Console.Write("[Play again] or [Return]?: ");
+                        string AgainNo = Console.ReadLine();
+                        if (AgainNo == "Play again" || AgainNo == "play again")
+                        {
+                            dash();
+                        }
+                        else if (AgainNo == "Return" || AgainNo == "return")
+                        {
+                            option1();
+                        }
+                        else
+                        {
+                            Console.WriteLine("Invalid input");
+                            Thread.Sleep(1000);
+                            option1();
+                        }
+                    }
+
+
+                    if (spike == true)
+                    {
+
+
+                        if (dashTime == line)
+                        {
+                            type = dashrng.Next(1, 5);
+                        }
+
+                        if (type == 1)
+                        {
+
+                            bool dead = false;
+                            if (dashTime == line)
+                            {
+                                Console.WriteLine(@"||  ===\");
+                                Console.WriteLine("||     ||");
+                                Console.WriteLine("||  ===|");
+                                Console.WriteLine("||     ||");
+                                Console.WriteLine("||  ===/");
+                            }
+                            if (dashTime == line + wait)
+                            {
+                                Console.WriteLine(@"||  ====\");
+                                Console.WriteLine("||     ||");
+                                Console.WriteLine("||    //");
+                                Console.WriteLine("||   //");
+                                Console.WriteLine(@"||  =====");
+
+                            }
+                            if (dashTime == line + (wait * 2))
+                            {
+                                Console.WriteLine("||  ==|");
+                                Console.WriteLine("||   ||");
+                                Console.WriteLine("||   ||");
+                                Console.WriteLine("||   ||");
+                                Console.WriteLine("||  ====");
+
+                            }
+                            if (dashTime == line + ((wait * 3)))
+                            {
+
+                                Console.WriteLine(@"||  ====  ==   ==  ==    ==  ||==\\");
+                                Console.WriteLine(@"||    ||  ||   ||  |\\  //|  ||  ||");
+                                Console.WriteLine(@"||    ||  ||   ||  ||\\//||  ||==//");
+                                Console.WriteLine(@"||    ||  \\   //  || -- ||  ||");
+                                Console.WriteLine(@"||  ==//   \===/   ||    ||  ||");
+                                Thread.Sleep(milis + timeSlowRT);
+                                if (Console.KeyAvailable)
+                                {
+                                    var key = Console.ReadKey(intercept: true).Key;
+                                    if (key == ConsoleKey.Q)
+                                    {
+                                        SpikeJump();
+                                    }
+                                    else if (refreshCount > 0)
+                                    {
+                                        RefreshJump(key);
+                                    }
+                                    else
+                                    {
+                                        imDead();
+                                    }
+
+                                }
+                                else
+                                {
+                                    dead = true;
+                                }
+                                if (dead == true)
+                                {
+                                    imDead();
+                                }
+                            }
+
+
+                        }
+                        else if (type == 2)
+                        {
+                            bool dead = false;
+                            if (dashTime == line)
+                            {
+                                Console.WriteLine(@"||  ===\");
+                                Console.WriteLine("||     ||");
+                                Console.WriteLine("||  ===|");
+                                Console.WriteLine("||     ||");
+                                Console.WriteLine("||  ===/");
+                            }
+                            if (dashTime == line + wait)
+                            {
+                                Console.WriteLine("||  ==|");
+                                Console.WriteLine("||   ||");
+                                Console.WriteLine("||   ||");
+                                Console.WriteLine("||   ||");
+                                Console.WriteLine("||  ====");
+
+                            }
+                            if (dashTime == line + (wait * 2))
+                            {
+                                Console.WriteLine(@"||  ====\");
+                                Console.WriteLine("||     ||");
+                                Console.WriteLine("||    //");
+                                Console.WriteLine("||   //");
+                                Console.WriteLine(@"||  =====");
+
+                            }
+                            if (dashTime == line + ((wait * 3)))
+                            {
+
+                                Console.WriteLine(@"||  ====  ==   ==  ==    ==  ||==\\");
+                                Console.WriteLine(@"||    ||  ||   ||  |\\  //|  ||  ||");
+                                Console.WriteLine(@"||    ||  ||   ||  ||\\//||  ||==//");
+                                Console.WriteLine(@"||    ||  \\   //  || -- ||  ||");
+                                Console.WriteLine(@"||  ==//   \===/   ||    ||  ||");
+                                Thread.Sleep(milis + timeSlowRT);
+                                if (Console.KeyAvailable)
+                                {
+                                    var key = Console.ReadKey(intercept: true).Key;
+                                    if (key == ConsoleKey.W)
+                                    {
+                                        SpikeJump();
+                                    }
+                                    else if (refreshCount > 0)
+                                    {
+                                        RefreshJump(key);
+                                    }
+                                    else
+                                    {
+                                        imDead();
+                                    }
+
+                                }
+                                else
+                                {
+                                    dead = true;
+                                }
+                                if (dead == true)
+                                {
+                                    imDead();
+                                }
+                            }
+                        }
+                        else if (type == 3)
+                        {
+                            bool dead = false;
+                            if (dashTime == line)
+                            {
+                                Console.WriteLine(@"||  ====");
+                                Console.WriteLine("||     ||");
+                                Console.WriteLine("||  ====");
+                                Console.WriteLine("||     ||");
+                                Console.WriteLine("||  ====");
+                            }
+                            if (dashTime == line + wait)
+                            {
+                                Console.WriteLine(@"||  ====\");
+                                Console.WriteLine("||     ||");
+                                Console.WriteLine("||    //");
+                                Console.WriteLine("||   //");
+                                Console.WriteLine(@"||  =====");
+
+                            }
+                            if (dashTime == line + (wait * 2))
+                            {
+                                Console.WriteLine("||  ====");
+                                Console.WriteLine("||   ||");
+                                Console.WriteLine("||   ||");
+                                Console.WriteLine("||   ||");
+                                Console.WriteLine("||  ====");
+
+                            }
+                            if (dashTime == line + ((wait * 3)))
+                            {
+
+                                Console.WriteLine(@"||  ====  ==   ==  ==    ==  ||==\\");
+                                Console.WriteLine(@"||    ||  ||   ||  |\\  //|  ||  ||");
+                                Console.WriteLine(@"||    ||  ||   ||  ||\\//||  ||==//");
+                                Console.WriteLine(@"||    ||  \\   //  || -- ||  ||");
+                                Console.WriteLine(@"||  ==//   \===/   ||    ||  ||");
+                                Thread.Sleep(milis + timeSlowRT);
+                                if (Console.KeyAvailable)
+                                {
+                                    var key = Console.ReadKey(intercept: true).Key;
+                                    if (key == ConsoleKey.E)
+                                    {
+                                        SpikeJump();
+                                    }
+                                    else if (refreshCount > 0)
+                                    {
+                                        RefreshJump(key);
+                                    }
+                                    else
+                                    {
+                                        imDead();
+                                    }
+
+                                }
+                                else
+                                {
+                                    dead = true;
+                                }
+                                if (dead == true)
+                                {
+                                    imDead();
+                                }
+                            }
+                        }
+                        else if (type == 4)
+                        {
+                            bool dead = false;
+                            if (dashTime == line)
+                            {
+                                Console.WriteLine("||  ==|");
+                                Console.WriteLine("||   ||");
+                                Console.WriteLine("||   ||");
+                                Console.WriteLine("||   ||");
+                                Console.WriteLine("||  ====");
+                            }
+                            if (dashTime == line + wait)
+                            {
+                                Console.WriteLine(@"||  ===\");
+                                Console.WriteLine("||     ||");
+                                Console.WriteLine("||    //");
+                                Console.WriteLine("||   //");
+                                Console.WriteLine(@"||  =====");
+
+                            }
+                            if (dashTime == line + (wait * 2))
+                            {
+                                Console.WriteLine(@"||  ===\");
+                                Console.WriteLine("||     ||");
+                                Console.WriteLine("||  ===|");
+                                Console.WriteLine("||     ||");
+                                Console.WriteLine("||  ===/");
+
+                            }
+                            if (dashTime == line + ((wait * 3)))
+                            {
+
+                                Console.WriteLine(@"||  ====  ==   ==  ==    ==  ||==\\");
+                                Console.WriteLine(@"||    ||  ||   ||  |\\  //|  ||  ||");
+                                Console.WriteLine(@"||    ||  ||   ||  ||\\//||  ||==//");
+                                Console.WriteLine(@"||    ||  \\   //  || -- ||  ||");
+                                Console.WriteLine(@"||  ==//   \===/   ||    ||  ||");
+                                Thread.Sleep(milis + timeSlowRT);
+                                if (Console.KeyAvailable)
+                                {
+                                    var key = Console.ReadKey(intercept: true).Key;
+                                    if (key == ConsoleKey.R)
+                                    {
+                                        //cooldown = SpikeJump(cooldown);
+                                        SpikeJump();
+
+                                    }
+                                    else if (refreshCount > 0)
+                                    {
+                                        RefreshJump(key);
+                                    }
+                                    else
+                                    {
+                                        imDead();
+                                    }
+
+                                }
+                                else
+                                {
+                                    dead = true;
+                                }
+                                if (dead == true)
+                                {
+                                    imDead();
+                                }
+                            }
+                        }
+                    }
+
+
+                }
 
             }
             else
             {
-                Console.WriteLine("Access Denied");
-                Script();
+                Console.WriteLine("Invalid input");
+                dash();
             }
         }
 
+        private static void RefreshJump(ConsoleKey key)
+        {
+            if (key == ConsoleKey.Spacebar)
+            {
+                Console.WriteLine(@"===");
+                Console.WriteLine(@"   ===");
+                Console.WriteLine(@">     ==");
+                Thread.Sleep(gameSpeed + timeSlowRT);
+                Console.WriteLine(@"        \\");
+                Console.WriteLine(@"----      =");
+                Console.WriteLine(@"====----   \\");
+                Console.WriteLine(@"========--- ||");
+                Thread.Sleep(gameSpeed + timeSlowRT);
+                Console.WriteLine(@"====----   //");
+                Console.WriteLine(@"----      =");
+                Console.WriteLine(@">       //");
+                Thread.Sleep(gameSpeed + timeSlowRT);
+                Console.WriteLine(@"      ==");
+                Console.WriteLine(@"   ===");
+                Console.WriteLine(@"===");
+                Console.WriteLine("Refresh consumed");
+                if (dashTime < 350)
+                {
+                    gameSpeed = (int)Math.Ceiling(gameSpeed / 2.0) + (gameSpeed / 4) + (gameSpeed / 6);
+                    milis = (int)Math.Ceiling(milis / 2.0) + (milis / 4) + (milis / 6);
+                }
+                else
+                {
+                    if (wait > 3)
+                        wait--;
+                }
+                dashScore += 1;
+                refreshCount--;
+                spikeavail = true;
+                cooldown = 0;
+            }
+            else
+            {
+                imDead();
+            }
+        }
+
+        private static void SpikeJump()
+        {
+            //private static int SpikeJump(Cooldown)
+            if (cooldown > 10)
+            {
+                Console.WriteLine(@"===");
+                Console.WriteLine(@"   ===");
+                Console.WriteLine(@">     ==");
+                Thread.Sleep(gameSpeed + timeSlowRT);
+                Console.WriteLine(@"        \\");
+                Console.WriteLine(@"----      =");
+                Console.WriteLine(@"====----   \\");
+                Console.WriteLine(@"========--- ||");
+                Thread.Sleep(gameSpeed + timeSlowRT);
+                Console.WriteLine(@"====----   //");
+                Console.WriteLine(@"----      =");
+                Console.WriteLine(@">       //");
+                Thread.Sleep(gameSpeed + timeSlowRT);
+                Console.WriteLine(@"      ==");
+                Console.WriteLine(@"   ===");
+                Console.WriteLine(@"===");
+                if (dashTime < 350)
+                {
+                    gameSpeed = (int)Math.Ceiling(gameSpeed / 2.0) + (gameSpeed / 4) + (gameSpeed / 6);
+                    milis = (int)Math.Ceiling(milis / 2.0) + (milis / 4) + (milis / 6);
+                }
+                else
+                {
+                    if (wait > 3)
+                        wait--;
+                }
+                dashScore += 1;
+                currency = currency + 5;
+                cooldown = 0;
+                spikeavail = true;
+            }
+            else
+            {
+                imDead();
+            }
+
+            //return cooldown;
+        }
+        #endregion
+        private static void Script()
+        {
+
+            //Console.Write("input password: ");
+            //String input = Console.ReadLine();
+
+            //if (input == password)
+            //{
+            //    Console.WriteLine("Access Granted");
+            //    option1();
+
+            //}
+            //else
+            //{
+            //    Console.WriteLine("Access Denied");
+            //    Script();
+            //}
+            option1();
+        }
+        #region(nots and crosses)
         private static void player1(string[] NCnumbers)
         {
            
@@ -228,7 +1067,191 @@ namespace @try
             
 
         }
+        private static void NorC()
+        {
 
+            bool NCgame = true;
+            string[] NCnumbers = new string[9];
+            for (int NCi = 0; NCi < 9; NCi++)
+            {
+                NCnumbers[NCi] = (NCi + 1).ToString();
+            }
+            double NCtime = 0;
+            for (NCtime = 0; NCtime < 2.5; NCtime += 0.5)
+            {
+                if (NCgame == true)
+                {
+                    Console.Clear();
+                    Console.WriteLine(NCnumbers[0] + " |" + NCnumbers[1] + " |" + NCnumbers[2]);
+                    Console.WriteLine("--+--+--");
+                    Console.WriteLine(NCnumbers[3] + " |" + NCnumbers[4] + " |" + NCnumbers[5]);
+                    Console.WriteLine("--+--+--");
+                    Console.WriteLine(NCnumbers[6] + " |" + NCnumbers[7] + " |" + NCnumbers[8]);
+                    player1(NCnumbers);
+                    if (NCnumbers[0] == "X" & NCnumbers[1] == "X" & NCnumbers[2] == "X")
+                    {
+                        Console.WriteLine("Player1 wins!");
+                        NCgame = false;
+                    }
+                    else if (NCnumbers[3] == "X" & NCnumbers[4] == "X" & NCnumbers[5] == "X")
+                    {
+                        Console.WriteLine("Player1 wins!");
+                        NCgame = false;
+                    }
+                    else if (NCnumbers[6] == "X" & NCnumbers[7] == "X" & NCnumbers[8] == "X")
+                    {
+                        Console.WriteLine("Player1 wins!");
+                        NCgame = false;
+                    }
+                    else if (NCnumbers[0] == "X" & NCnumbers[3] == "X" & NCnumbers[6] == "X")
+                    {
+                        Console.WriteLine("Player1 wins!");
+                        NCgame = false;
+                    }
+                    else if (NCnumbers[1] == "X" & NCnumbers[4] == "X" & NCnumbers[7] == "X")
+                    {
+                        Console.WriteLine("Player1 wins!");
+                        NCgame = false;
+                    }
+                    else if (NCnumbers[2] == "X" & NCnumbers[5] == "X" & NCnumbers[8] == "X")
+                    {
+                        Console.WriteLine("Player1 wins!");
+                        NCgame = false;
+                    }
+                    else if (NCnumbers[0] == "X" & NCnumbers[4] == "X" & NCnumbers[8] == "X")
+                    {
+                        Console.WriteLine("Player1 wins!");
+                        NCgame = false;
+                    }
+                    else if (NCnumbers[2] == "X" & NCnumbers[4] == "X" & NCnumbers[6] == "X")
+                    {
+                        Console.WriteLine("Player1 wins!");
+                        NCgame = false;
+                    }
+                    else if (NCtime == 2)
+                    {
+
+
+                        Console.WriteLine(NCnumbers[0] + " |" + NCnumbers[1] + " |" + NCnumbers[2]);
+                        Console.WriteLine("--+--+--");
+                        Console.WriteLine(NCnumbers[3] + " |" + NCnumbers[4] + " |" + NCnumbers[5]);
+                        Console.WriteLine("--+--+--");
+                        Console.WriteLine(NCnumbers[6] + " |" + NCnumbers[7] + " |" + NCnumbers[8]);
+                        Console.WriteLine("Tied!");
+                        NCgame = false;
+                    }
+                }
+                else
+                {
+                    Console.Write("[Play again] or [Return]?: ");
+                    string AgainNo = Console.ReadLine();
+                    if (AgainNo == "Play again")
+                    {
+                        NorC();
+                    }
+                    else if (AgainNo == "Return")
+                    {
+                        option1();
+                    }
+                    else
+                    {
+                        Console.WriteLine("Invalid input");
+                    }
+                }
+                if (NCgame == true)
+                {
+                    Console.Clear();
+                    Console.WriteLine(NCnumbers[0] + " |" + NCnumbers[1] + " |" + NCnumbers[2]);
+                    Console.WriteLine("--+--+--");
+                    Console.WriteLine(NCnumbers[3] + " |" + NCnumbers[4] + " |" + NCnumbers[5]);
+                    Console.WriteLine("--+--+--");
+                    Console.WriteLine(NCnumbers[6] + " |" + NCnumbers[7] + " |" + NCnumbers[8]);
+                    player2(NCnumbers);
+                    if (NCnumbers[0] == "O" & NCnumbers[1] == "O" & NCnumbers[2] == "O")
+                    {
+                        Console.WriteLine("Player2 wins!");
+                        NCgame = false;
+                    }
+                    else if (NCnumbers[3] == "O" & NCnumbers[4] == "O" & NCnumbers[5] == "O")
+                    {
+                        Console.WriteLine("Player2 wins!");
+                        NCgame = false;
+                    }
+                    else if (NCnumbers[6] == "O" & NCnumbers[7] == "O" & NCnumbers[8] == "O")
+                    {
+                        Console.WriteLine("Player2 wins!");
+                        NCgame = false;
+                    }
+                    else if (NCnumbers[0] == "O" & NCnumbers[3] == "O" & NCnumbers[6] == "O")
+                    {
+                        Console.WriteLine("Player2 wins!");
+                        NCgame = false;
+                    }
+                    else if (NCnumbers[1] == "O" & NCnumbers[4] == "O" & NCnumbers[7] == "O")
+                    {
+                        Console.WriteLine("Player2 wins!");
+                        NCgame = false;
+                    }
+                    else if (NCnumbers[2] == "O" & NCnumbers[5] == "O" & NCnumbers[8] == "O")
+                    {
+                        Console.WriteLine("Player2 wins!");
+                        NCgame = false;
+                    }
+                    else if (NCnumbers[0] == "O" & NCnumbers[4] == "O" & NCnumbers[8] == "O")
+                    {
+                        Console.WriteLine("Player2 wins!");
+                        NCgame = false;
+                    }
+                    else if (NCnumbers[2] == "O" & NCnumbers[4] == "O" & NCnumbers[6] == "O")
+                    {
+                        Console.WriteLine("Player2 wins!");
+                        NCgame = false;
+                    }
+                    else if (NCtime == 2)
+                    {
+
+
+                        Console.WriteLine(NCnumbers[0] + " |" + NCnumbers[1] + " |" + NCnumbers[2]);
+                        Console.WriteLine("--+--+--");
+                        Console.WriteLine(NCnumbers[3] + " |" + NCnumbers[4] + " |" + NCnumbers[5]);
+                        Console.WriteLine("--+--+--");
+                        Console.WriteLine(NCnumbers[6] + " |" + NCnumbers[7] + " |" + NCnumbers[8]);
+                        Console.WriteLine("Tied!");
+                        NCgame = false;
+                    }
+                }
+                else
+                {
+                    Console.WriteLine(NCnumbers[0] + " |" + NCnumbers[1] + " |" + NCnumbers[2]);
+                    Console.WriteLine("--+--+--");
+                    Console.WriteLine(NCnumbers[3] + " |" + NCnumbers[4] + " |" + NCnumbers[5]);
+                    Console.WriteLine("--+--+--");
+                    Console.WriteLine(NCnumbers[6] + " |" + NCnumbers[7] + " |" + NCnumbers[8]);
+                    Console.Write("[Play again] or [Return]?: ");
+                    string AgainNo = Console.ReadLine();
+                    if (AgainNo == "Play again" || AgainNo == "play again")
+                    {
+                        NorC();
+                    }
+                    else if (AgainNo == "Return" || AgainNo == "return")
+                    {
+                        option1();
+                    }
+                    else
+                    {
+                        Console.WriteLine("Invalid input");
+                        Thread.Sleep(1000);
+                        option1();
+                    }
+                }
+
+            }
+
+
+
+
+
+        }
         private static void player2(string[] NCnumbers)
         {
             
@@ -269,19 +1292,20 @@ namespace @try
 
 
         }
-
+#endregion
         private static void option1()
         {
             Console.ForegroundColor = ConsoleColor.Yellow;
             Console.Clear();
             Console.WriteLine("                                                    balance: $" + currency);
             Console.WriteLine("what would you like to do?");
-            Console.WriteLine("1. Change password");
-            Console.WriteLine("2. Log out");
+            //Console.WriteLine("1. Change password");
+            //Console.WriteLine("2. Log out");
             Console.WriteLine("3. Open images");
             Console.WriteLine("4. Play game");
             Console.WriteLine("5. Draw");
             Console.WriteLine("6. Gamble");
+            Console.WriteLine("7. Item storage");
             string todo = Console.ReadLine();
 
             if (todo == "4")
@@ -320,20 +1344,20 @@ namespace @try
                     option1();
                 }
             }
-            else if (todo == "2")
-            {
-                Console.Clear();
-                Script();
-            }
-            else if (todo == "1")
-            {
-                Console.Clear();
-                Console.Write("What would you like to change your password to?: ");
-                password = Console.ReadLine();
+            //else if (todo == "2")
+            //{
+            //    Console.Clear();
+            //    Script();
+            //}
+            //else if (todo == "1")
+            //{
+            //    Console.Clear();
+            //    Console.Write("What would you like to change your password to?: ");
+            //    password = Console.ReadLine();
                 
-                Console.WriteLine("Password changed to, " + password);
-                option1();
-            }
+            //    Console.WriteLine("Password changed to, " + password);
+            //    option1();
+            //}
             else if (todo == "5")
             {
                 drawing();
@@ -341,6 +1365,10 @@ namespace @try
             else if (todo == "6")
             {
                 gambleSelect();
+            }
+            else if (todo == "7")
+            {
+                itemStorage();
             }
             else
             {
@@ -350,6 +1378,7 @@ namespace @try
 
         }
 
+        #region(gambling)
         private static void gambleSelect()
         {
             Console.ForegroundColor = ConsoleColor.Red;
@@ -358,6 +1387,7 @@ namespace @try
             Console.WriteLine("1. Roulette Wheel");
             Console.WriteLine("2. Russian Roulette");
             Console.WriteLine("3. Slot Machine");
+            Console.WriteLine("4. Claw Machine");
             Console.WriteLine("5. Return");
 
             string ginput = Console.ReadLine();
@@ -373,6 +1403,10 @@ namespace @try
             {
                 slotMachine();
             }
+            else if (ginput == "4")
+            {
+                clawMachine();
+            }
             else if (ginput == "5")
             {
                 option1();
@@ -380,6 +1414,7 @@ namespace @try
             else
             {
                 Console.WriteLine("Invalid Input");
+                Thread.Sleep(500);
                 gambleSelect();
             }
         }
@@ -1288,7 +2323,7 @@ namespace @try
             {
                 //28% chance
                 Console.WriteLine("TWO NUMBER WIN!");
-                Console.WriteLine("You won $300!");
+                Console.WriteLine("You won $350!");
                 currency += 350;
 
             }
@@ -1315,7 +2350,7 @@ namespace @try
             }
 
         }
-
+        
         private static void slotvisual(int slotnumber1, int slotnumber2, int slotnumber3)
         {
             Console.WriteLine(@"  ____-----____");
@@ -1331,7 +2366,7 @@ namespace @try
             Console.WriteLine(@" |    _____    |");
             Console.WriteLine(@" |____|___|____|");
         }
-
+#endregion
         private static void gameSelect(string todo)
         {
             Console.ForegroundColor = ConsoleColor.Cyan;
@@ -1339,7 +2374,7 @@ namespace @try
             Console.WriteLine("What game would you like to play?");
             Console.WriteLine("1. Guess the number");
             Console.WriteLine("2. Noughts and crosses");
-            Console.WriteLine("3. Dash");
+            Console.WriteLine("3. Dash (you should try this, its a custom game i made from scratch)");
             Console.WriteLine("4. Dice roll");
             Console.WriteLine("5. Nucklebones");
             Console.WriteLine("6. Return");
@@ -1376,192 +2411,6 @@ namespace @try
                 Console.WriteLine("Invalid Input");
                 gameSelect(todo);
             }
-        }
-
-        private static void NorC()
-        {
-            
-            bool NCgame = true;
-            string[] NCnumbers = new string[9];
-            for (int NCi = 0; NCi < 9; NCi++)
-            {
-                NCnumbers[NCi] = (NCi + 1).ToString();
-            }
-            double NCtime = 0;
-            for ( NCtime = 0; NCtime < 2.5; NCtime+=0.5)
-            {
-                if (NCgame == true)
-                {
-                    Console.Clear();
-                    Console.WriteLine(NCnumbers[0] + " |" + NCnumbers[1] + " |" + NCnumbers[2]);
-                    Console.WriteLine("--+--+--");
-                    Console.WriteLine(NCnumbers[3] + " |" + NCnumbers[4] + " |" + NCnumbers[5]);
-                    Console.WriteLine("--+--+--");
-                    Console.WriteLine(NCnumbers[6] + " |" + NCnumbers[7] + " |" + NCnumbers[8]);
-                    player1(NCnumbers);
-                    if (NCnumbers[0] == "X" & NCnumbers[1] == "X" & NCnumbers[2] == "X")
-                    {
-                        Console.WriteLine("Player1 wins!");
-                        NCgame = false;
-                    }
-                    else if (NCnumbers[3] == "X" & NCnumbers[4] == "X" & NCnumbers[5] == "X")
-                    {
-                        Console.WriteLine("Player1 wins!");
-                        NCgame = false;
-                    }
-                    else if (NCnumbers[6] == "X" & NCnumbers[7] == "X" & NCnumbers[8] == "X")
-                    {
-                        Console.WriteLine("Player1 wins!");
-                        NCgame = false;
-                    }
-                    else if (NCnumbers[0] == "X" & NCnumbers[3] == "X" & NCnumbers[6] == "X")
-                    {
-                        Console.WriteLine("Player1 wins!");
-                        NCgame = false;
-                    }
-                    else if (NCnumbers[1] == "X" & NCnumbers[4] == "X" & NCnumbers[7] == "X")
-                    {
-                        Console.WriteLine("Player1 wins!");
-                        NCgame = false;
-                    }
-                    else if (NCnumbers[2] == "X" & NCnumbers[5] == "X" & NCnumbers[8] == "X")
-                    {
-                        Console.WriteLine("Player1 wins!");
-                        NCgame = false;
-                    }
-                    else if (NCnumbers[0] == "X" & NCnumbers[4] == "X" & NCnumbers[8] == "X")
-                    {
-                        Console.WriteLine("Player1 wins!");
-                        NCgame = false;
-                    }
-                    else if (NCnumbers[2] == "X" & NCnumbers[4] == "X" & NCnumbers[6] == "X")
-                    {
-                        Console.WriteLine("Player1 wins!");
-                        NCgame = false;
-                    }
-                    else if (NCtime == 2)
-                    {
-
-
-                        Console.WriteLine(NCnumbers[0] + " |" + NCnumbers[1] + " |" + NCnumbers[2]);
-                        Console.WriteLine("--+--+--");
-                        Console.WriteLine(NCnumbers[3] + " |" + NCnumbers[4] + " |" + NCnumbers[5]);
-                        Console.WriteLine("--+--+--");
-                        Console.WriteLine(NCnumbers[6] + " |" + NCnumbers[7] + " |" + NCnumbers[8]);
-                        Console.WriteLine("Tied!");
-                        NCgame = false;
-                    }
-                }
-                else
-                {
-                    Console.Write("[Play again] or [Return]?: ");
-                    string AgainNo = Console.ReadLine();
-                    if (AgainNo == "Play again")
-                    {
-                        NorC();
-                    }
-                    else if (AgainNo == "Return")
-                    {
-                        option1();
-                    }
-                    else
-                    {
-                        Console.WriteLine("Invalid input");
-                    }
-                }
-                if (NCgame == true)
-                {
-                    Console.Clear();
-                    Console.WriteLine(NCnumbers[0] + " |" + NCnumbers[1] + " |" + NCnumbers[2]);
-                    Console.WriteLine("--+--+--");
-                    Console.WriteLine(NCnumbers[3] + " |" + NCnumbers[4] + " |" + NCnumbers[5]);
-                    Console.WriteLine("--+--+--");
-                    Console.WriteLine(NCnumbers[6] + " |" + NCnumbers[7] + " |" + NCnumbers[8]);
-                    player2(NCnumbers);
-                    if (NCnumbers[0] == "O" & NCnumbers[1] == "O" & NCnumbers[2] == "O")
-                    {
-                        Console.WriteLine("Player2 wins!");
-                        NCgame = false;
-                    }
-                    else if (NCnumbers[3] == "O" & NCnumbers[4] == "O" & NCnumbers[5] == "O")
-                    {
-                        Console.WriteLine("Player2 wins!");
-                        NCgame = false;
-                    }
-                    else if (NCnumbers[6] == "O" & NCnumbers[7] == "O" & NCnumbers[8] == "O")
-                    {
-                        Console.WriteLine("Player2 wins!");
-                        NCgame = false;
-                    }
-                    else if (NCnumbers[0] == "O" & NCnumbers[3] == "O" & NCnumbers[6] == "O")
-                    {
-                        Console.WriteLine("Player2 wins!");
-                        NCgame = false;
-                    }
-                    else if (NCnumbers[1] == "O" & NCnumbers[4] == "O" & NCnumbers[7] == "O")
-                    {
-                        Console.WriteLine("Player2 wins!");
-                        NCgame = false;
-                    }
-                    else if (NCnumbers[2] == "O" & NCnumbers[5] == "O" & NCnumbers[8] == "O")
-                    {
-                        Console.WriteLine("Player2 wins!");
-                        NCgame = false;
-                    }
-                    else if (NCnumbers[0] == "O" & NCnumbers[4] == "O" & NCnumbers[8] == "O")
-                    {
-                        Console.WriteLine("Player2 wins!");
-                        NCgame = false;
-                    }
-                    else if (NCnumbers[2] == "O" & NCnumbers[4] == "O" & NCnumbers[6] == "O")
-                    {
-                        Console.WriteLine("Player2 wins!");
-                        NCgame = false;
-                    }
-                    else if (NCtime == 2)
-                    {
-
-
-                        Console.WriteLine(NCnumbers[0] + " |" + NCnumbers[1] + " |" + NCnumbers[2]);
-                        Console.WriteLine("--+--+--");
-                        Console.WriteLine(NCnumbers[3] + " |" + NCnumbers[4] + " |" + NCnumbers[5]);
-                        Console.WriteLine("--+--+--");
-                        Console.WriteLine(NCnumbers[6] + " |" + NCnumbers[7] + " |" + NCnumbers[8]);
-                        Console.WriteLine("Tied!");
-                        NCgame = false;
-                    }
-                }
-                else
-                {
-                    Console.WriteLine(NCnumbers[0] + " |" + NCnumbers[1] + " |" + NCnumbers[2]);
-                    Console.WriteLine("--+--+--");
-                    Console.WriteLine(NCnumbers[3] + " |" + NCnumbers[4] + " |" + NCnumbers[5]);
-                    Console.WriteLine("--+--+--");
-                    Console.WriteLine(NCnumbers[6] + " |" + NCnumbers[7] + " |" + NCnumbers[8]);
-                    Console.Write("[Play again] or [Return]?: ");
-                    string AgainNo = Console.ReadLine();
-                    if (AgainNo == "Play again"|| AgainNo == "play again")
-                    {
-                        NorC();
-                    }
-                    else if (AgainNo == "Return"|| AgainNo == "return")
-                    {
-                        option1();
-                    }
-                    else
-                    {
-                        Console.WriteLine("Invalid input");
-                        Thread.Sleep(1000);
-                        option1();
-                    }
-                }
-
-            }
-            
-            
-
-
-
         }
 
         private static void PANgame()
@@ -1604,717 +2453,6 @@ namespace @try
 
         }
 
-        private static void dash()
-        {
-            Console.ForegroundColor = ConsoleColor.White;
-            Console.Clear();
-            Console.WriteLine("Do you want to play with Powerups active? [Yes] or [No]");
-            userpowerupinput = Console.ReadLine();
-            if (userpowerupinput == "yes" || userpowerupinput == "Yes")
-                Console.WriteLine("Press [Q],[W],[E],[R] to jump in acordance to corresponding situations.\n3,2,1 = [Q]\n3,1,2 = [W]\n3,2,I = [E]\n1,2,3 = [R]\nPowerups: Press space when a powerup symbol appears to activate\nGhostMode-for a short time survive if you hit a spike\nTimeSlow-for a short time, slow down the rate of the game\nRefresh-up to 2 refresh can be collected, if you press space when jumping it will consume 1 refresh and succeed the jump\nYou receive $5 for every completed jump.\n[enter] to start!");
-            else if (userpowerupinput == "No" || userpowerupinput == "no")
-                Console.WriteLine("Press [Q],[W],[E],[R] to jump in acordance to corresponding situations.\n3,2,1 = [Q]\n3,1,2 = [W]\n3,2,I = [E]\n1,2,3 = [R]\nYou receive $5 for every completed jump.\n[enter] to start!");
-            else
-            {
-                Console.WriteLine("Invalid input");
-                Thread.Sleep(1000);
-                dash();
-            }
-            int startInput = Console.Read();
-            bool spike = false;
-            Random dashrng = new Random();
-            int type = 0;
-            
-            milis = 450;
-            line = 0;
-            wait = 12;
-            gameSpeed = 88;
-            dashScore = 0;
-            powerSpeed = 0;
-            timeSlowLine = 1000;
-            powerMilis = 800;
-            ghost = false;
-            ghostLine = 1000;
-            timeSlowRT = 0;
-            refreshCount = 0;
-
-
-
-
-            if (startInput == 13)
-            {
-
-                for (dashTime = 0; dashTime < 1550; dashTime++)
-                {
-                    
-                    if (Console.KeyAvailable)
-                    {
-                        
-                        
-
-                            var key = Console.ReadKey(intercept: true).Key;
-                            if (key == ConsoleKey.Q)
-                            {
-                                if(cooldown > 10)
-                                {
-                                    Console.WriteLine(@"===");
-                                    Console.WriteLine(@"   ===");
-                                    Console.WriteLine(@"      ==");
-                                    Thread.Sleep(gameSpeed + timeSlowRT);
-                                    Console.WriteLine(@"        \\");
-                                    Console.WriteLine(@"          =");
-                                    Console.WriteLine(@"           \\");
-                                    Console.WriteLine(@"            ||");
-                                    Thread.Sleep(gameSpeed + timeSlowRT);
-                                    Console.WriteLine(@"           //");
-                                    Console.WriteLine(@"          =");
-                                    Console.WriteLine(@"        //");
-                                    Thread.Sleep(gameSpeed + timeSlowRT);
-                                    Console.WriteLine(@"      ==");
-                                    Console.WriteLine(@"   ===");
-                                    Console.WriteLine(@"===");
-
-                                cooldown = 0;
-                                }  
-                            }
-                            else if (key == ConsoleKey.W)
-                            {
-                                if(cooldown > 10)
-                                {
-                                Console.WriteLine(@"===");
-                                Console.WriteLine(@"   ===");
-                                Console.WriteLine(@"      ==");
-                                Thread.Sleep(gameSpeed + timeSlowRT);
-                                Console.WriteLine(@"        \\");
-                                Console.WriteLine(@"          =");
-                                Console.WriteLine(@"           \\");
-                                Console.WriteLine(@"            ||");
-                                Thread.Sleep(gameSpeed + timeSlowRT);
-                                Console.WriteLine(@"           //");
-                                Console.WriteLine(@"          =");
-                                Console.WriteLine(@"        //");
-                                Thread.Sleep(gameSpeed + timeSlowRT);
-                                Console.WriteLine(@"      ==");
-                                Console.WriteLine(@"   ===");
-                                Console.WriteLine(@"===");
-                                cooldown = 0;
-                                }  
-                                
-                            }
-                            else if (key == ConsoleKey.E)
-                            {
-                                if(cooldown > 10)
-                                {
-                                Console.WriteLine(@"===");
-                                Console.WriteLine(@"   ===");
-                                Console.WriteLine(@"      ==");
-                                Thread.Sleep(gameSpeed + timeSlowRT);
-                                Console.WriteLine(@"        \\");
-                                Console.WriteLine(@"          =");
-                                Console.WriteLine(@"           \\");
-                                Console.WriteLine(@"            ||");
-                                Thread.Sleep(gameSpeed + timeSlowRT);
-                                Console.WriteLine(@"           //");
-                                Console.WriteLine(@"          =");
-                                Console.WriteLine(@"        //");
-                                Thread.Sleep(gameSpeed + timeSlowRT);
-                                Console.WriteLine(@"      ==");
-                                Console.WriteLine(@"   ===");
-                                Console.WriteLine(@"===");
-                                cooldown = 0;
-                                }  
-                                
-                            }
-                            else if (key == ConsoleKey.R)
-                            {
-                                if(cooldown > 10)
-                                {
-                                Console.WriteLine(@"===");
-                                Console.WriteLine(@"   ===");
-                                Console.WriteLine(@"      ==");
-                                Thread.Sleep(gameSpeed + timeSlowRT);
-                                Console.WriteLine(@"        \\");
-                                Console.WriteLine(@"          =");
-                                Console.WriteLine(@"           \\");
-                                Console.WriteLine(@"            ||");
-                                Thread.Sleep(gameSpeed + timeSlowRT);
-                                Console.WriteLine(@"           //");
-                                Console.WriteLine(@"          =");
-                                Console.WriteLine(@"        //");
-                                Thread.Sleep(gameSpeed + timeSlowRT);
-                                Console.WriteLine(@"      ==");
-                                Console.WriteLine(@"   ===");
-                                Console.WriteLine(@"===");
-                                cooldown = 0;
-                                }  
-                                
-                            }
-                            else
-                            {
-                                
-                            }
-                        
-                        
-                    }
-                    else
-                    {
-                        if (refreshCount == 0)
-                        {
-                            Console.WriteLine("||\n||");
-                        }
-                        else if (refreshCount == 1)
-                        {
-                            Console.WriteLine("||\n||.");
-                        }
-                        else if (refreshCount == 2)
-                        {
-                            Console.WriteLine("||\n||..");
-                        }
-
-                    }
-
-                    Thread.Sleep(gameSpeed - extraSpeed);
-                    Thread.Sleep(powerSpeed);
-                    cooldown++;
-                    if (userpowerupinput == "yes" || userpowerupinput == "Yes")
-                    {
-                        int powerChance = dashrng.Next(1, 150);
-                        if (powerChance == 1)
-                        {
-                            int powerUp = dashrng.Next(1, 5);
-                            if (powerUp == 1)
-                            {
-                                Console.WriteLine(@"||                      __--__");
-                                Console.WriteLine(@"||                     |.'  /.|");
-                                Console.WriteLine(@"||                    | ' () ' |");
-                                Console.WriteLine(@"||                     |'. |.'|");
-                                Console.WriteLine(@"||                      --__--");
-                                Thread.Sleep(powerMilis);
-                                if (Console.KeyAvailable)
-                                {
-                                    var key = Console.ReadKey(intercept: true).Key;
-                                    if (key == ConsoleKey.Spacebar)
-                                    {
-                                        {
-                                            timeSlowLine = dashTime;
-                                            powerSpeed = 200;
-                                            Console.WriteLine("TimeSlow activated");
-                                            Thread.Sleep(300);
-                                            timeSlowRT = 200;
-                                        }
-                                    }
-                                }
-
-                            }
-                            else if (powerUp == 2)
-                            {
-                                Console.WriteLine(@"||                     _--_");
-                                Console.WriteLine(@"||                    / 00 \ ");
-                                Console.WriteLine(@"||                    | o  |");
-                                Console.WriteLine(@"||                    |/\/\|");
-                                Thread.Sleep(powerMilis);
-                                if (Console.KeyAvailable)
-                                {
-                                    var key = Console.ReadKey(intercept: true).Key;
-                                    if (key == ConsoleKey.Spacebar)
-                                    {
-                                        {
-                                            ghostLine = dashTime;
-                                            ghost = true;
-                                            Console.WriteLine("GhostMode activated");
-                                            Thread.Sleep(500);
-                                        }
-                                    }
-                                }
-                            }
-                            else if (powerUp == 3 || powerUp == 4)
-                            {
-                                Console.WriteLine(@"||                   . () 0 ");
-                                Console.WriteLine(@"||                     .O 'o ");
-                                Console.WriteLine(@"||                    o _--_ ");
-                                Console.WriteLine(@"||                     |-__-|");
-                                Console.WriteLine(@"||                      -__- ");
-                                Thread.Sleep(powerMilis);
-                                if (Console.KeyAvailable)
-                                {
-                                    var key = Console.ReadKey(intercept: true).Key;
-                                    if (key == ConsoleKey.Spacebar)
-                                    {
-                                        {
-                                            if (refreshCount < 2)
-                                            {
-                                                Console.WriteLine("Refresh added");
-                                                refreshCount++;
-                                            }
-                                            else
-                                            {
-                                                Console.WriteLine("Maximum refresh held");
-                                            }
-
-                                        }
-                                    }
-                                }
-                            }
-                        }
-                        if (dashTime == (timeSlowLine + 30))
-                        {
-                            Console.WriteLine("TimeSlow speeding up");
-                            powerSpeed = 150;
-                            timeSlowRT = 150;
-                        }
-                        if (dashTime == (timeSlowLine + 35))
-                        {
-                            powerSpeed = 100;
-                            timeSlowRT = 100;
-                        }
-                        if (dashTime == (timeSlowLine + 40))
-                        {
-                            powerSpeed = 50;
-                            timeSlowRT = 50;
-                        }
-                        if (dashTime == (timeSlowLine + 45))
-                        {
-                            powerSpeed = 0;
-                            timeSlowRT = 0;
-                        }
-                        if (dashTime == (ghostLine + 50))
-                        {
-                            if (ghost == true)
-                            {
-
-                                ghost = false;
-                                Console.WriteLine("GhostMode ending");
-
-                            }
-                        }
-                    }
-
-
-
-                    if (dashTime == 20)
-                    {
-                        line = 20;
-                        spike = true;
-                        spikeavail = false;
-                    }
-                    if (spikeavail == true)
-                    {
-                        spikeavail = false;
-                        spikeactive = true;
-                        spikeline = dashTime;
-                    }
-                    if (spikeactive == true)
-                    {
-                        if (dashTime == spikeline + wait)
-                        {
-                            spikeactive = false;
-                            line = dashTime;
-                        }
-                    }
-                    if (dashTime > 800)
-                    {
-                        Console.WriteLine(@" ==  ==  =====  ==  ==     ==    == == ==  ==");
-                        Console.WriteLine(@"  \\//  //   \\ ||  ||     ||    || || ||\ ||");
-                        Console.WriteLine(@"   ||   ||   || ||  ||     || /\ || || ||\\||");
-                        Console.WriteLine(@"   ||   \\   // \\  //     ||//\\|| || || \||");
-                        Console.WriteLine(@"   ==    =====   ====      ===  === == ==  ==");
-                        dashTime = 800;
-                        Console.WriteLine("your Dash score was, " + dashScore + "!");
-                        Thread.Sleep(1000);
-                        dashScoreVoid();
-                        Thread.Sleep(1000);
-                        Console.Write("[Play again] or [Return]?: ");
-                        string AgainNo = Console.ReadLine();
-                        if (AgainNo == "Play again" || AgainNo == "play again")
-                        {
-                            dash();
-                        }
-                        else if (AgainNo == "Return" || AgainNo == "return")
-                        {
-                            option1();
-                        }
-                        else
-                        {
-                            Console.WriteLine("Invalid input");
-                            Thread.Sleep(1000);
-                            option1();
-                        }
-                    }
-
-
-                    if (spike == true)
-                    {
-
-
-                        if (dashTime == line)
-                        {
-                            type = dashrng.Next(1, 5);
-                        }
-
-                        if (type == 1)
-                        {
-
-                            bool dead = false;
-                            if (dashTime == line)
-                            {
-                                Console.WriteLine(@"||  ===\");
-                                Console.WriteLine("||     ||");
-                                Console.WriteLine("||  ===|");
-                                Console.WriteLine("||     ||");
-                                Console.WriteLine("||  ===/");
-                            }
-                            if (dashTime == line + wait)
-                            {
-                                Console.WriteLine(@"||  ====\");
-                                Console.WriteLine("||     ||");
-                                Console.WriteLine("||    //");
-                                Console.WriteLine("||   //");
-                                Console.WriteLine(@"||  =====");
-
-                            }
-                            if (dashTime == line + (wait * 2))
-                            {
-                                Console.WriteLine("||  ==|");
-                                Console.WriteLine("||   ||");
-                                Console.WriteLine("||   ||");
-                                Console.WriteLine("||   ||");
-                                Console.WriteLine("||  ====");
-
-                            }
-                            if (dashTime == line + ((wait * 3)))
-                            {
-
-                                Console.WriteLine(@"||  ====  ==   ==  ==    ==  ||==\\");
-                                Console.WriteLine(@"||    ||  ||   ||  |\\  //|  ||  ||");
-                                Console.WriteLine(@"||    ||  ||   ||  ||\\//||  ||==//");
-                                Console.WriteLine(@"||    ||  \\   //  || -- ||  ||");
-                                Console.WriteLine(@"||  ==//   \===/   ||    ||  ||");
-                                Thread.Sleep(milis + timeSlowRT);
-                                if (Console.KeyAvailable)
-                                {
-                                    var key = Console.ReadKey(intercept: true).Key;
-                                    if (key == ConsoleKey.Q)
-                                    {
-                                        SpikeJump();
-                                    }
-                                    else if (refreshCount > 0)
-                                    {
-                                        RefreshJump(key);
-                                    }
-                                    else
-                                    {
-                                        imDead();
-                                    }
-
-                                }
-                                else
-                                {
-                                    dead = true;
-                                }
-                                if (dead == true)
-                                {
-                                    imDead();
-                                }
-                            }
-
-
-                        }
-                        else if (type == 2)
-                        {
-                            bool dead = false;
-                            if (dashTime == line)
-                            {
-                                Console.WriteLine(@"||  ===\");
-                                Console.WriteLine("||     ||");
-                                Console.WriteLine("||  ===|");
-                                Console.WriteLine("||     ||");
-                                Console.WriteLine("||  ===/");
-                            }
-                            if (dashTime == line + wait)
-                            {
-                                Console.WriteLine("||  ==|");
-                                Console.WriteLine("||   ||");
-                                Console.WriteLine("||   ||");
-                                Console.WriteLine("||   ||");
-                                Console.WriteLine("||  ====");
-
-                            }
-                            if (dashTime == line + (wait * 2))
-                            {
-                                Console.WriteLine(@"||  ====\");
-                                Console.WriteLine("||     ||");
-                                Console.WriteLine("||    //");
-                                Console.WriteLine("||   //");
-                                Console.WriteLine(@"||  =====");
-
-                            }
-                            if (dashTime == line + ((wait * 3)))
-                            {
-
-                                Console.WriteLine(@"||  ====  ==   ==  ==    ==  ||==\\");
-                                Console.WriteLine(@"||    ||  ||   ||  |\\  //|  ||  ||");
-                                Console.WriteLine(@"||    ||  ||   ||  ||\\//||  ||==//");
-                                Console.WriteLine(@"||    ||  \\   //  || -- ||  ||");
-                                Console.WriteLine(@"||  ==//   \===/   ||    ||  ||");
-                                Thread.Sleep(milis + timeSlowRT);
-                                if (Console.KeyAvailable)
-                                {
-                                    var key = Console.ReadKey(intercept: true).Key;
-                                    if (key == ConsoleKey.W)
-                                    {
-                                        SpikeJump();
-                                    }
-                                    else if (refreshCount > 0)
-                                    {
-                                        RefreshJump(key);
-                                    }
-                                    else
-                                    {
-                                        imDead();
-                                    }
-
-                                }
-                                else
-                                {
-                                    dead = true;
-                                }
-                                if (dead == true)
-                                {
-                                    imDead();
-                                }
-                            }
-                        }
-                        else if (type == 3)
-                        {
-                            bool dead = false;
-                            if (dashTime == line)
-                            {
-                                Console.WriteLine(@"||  ====");
-                                Console.WriteLine("||     ||");
-                                Console.WriteLine("||  ====");
-                                Console.WriteLine("||     ||");
-                                Console.WriteLine("||  ====");
-                            }
-                            if (dashTime == line + wait)
-                            {
-                                Console.WriteLine(@"||  ====\");
-                                Console.WriteLine("||     ||");
-                                Console.WriteLine("||    //");
-                                Console.WriteLine("||   //");
-                                Console.WriteLine(@"||  =====");
-
-                            }
-                            if (dashTime == line + (wait * 2))
-                            {
-                                Console.WriteLine("||  ====");
-                                Console.WriteLine("||   ||");
-                                Console.WriteLine("||   ||");
-                                Console.WriteLine("||   ||");
-                                Console.WriteLine("||  ====");
-
-                            }
-                            if (dashTime == line + ((wait * 3)))
-                            {
-
-                                Console.WriteLine(@"||  ====  ==   ==  ==    ==  ||==\\");
-                                Console.WriteLine(@"||    ||  ||   ||  |\\  //|  ||  ||");
-                                Console.WriteLine(@"||    ||  ||   ||  ||\\//||  ||==//");
-                                Console.WriteLine(@"||    ||  \\   //  || -- ||  ||");
-                                Console.WriteLine(@"||  ==//   \===/   ||    ||  ||");
-                                Thread.Sleep(milis + timeSlowRT);
-                                if (Console.KeyAvailable)
-                                {
-                                    var key = Console.ReadKey(intercept: true).Key;
-                                    if (key == ConsoleKey.E)
-                                    {
-                                        SpikeJump();
-                                    }
-                                    else if (refreshCount > 0)
-                                    {
-                                        RefreshJump(key);
-                                    }
-                                    else
-                                    {
-                                        imDead();
-                                    }
-
-                                }
-                                else
-                                {
-                                    dead = true;
-                                }
-                                if (dead == true)
-                                {
-                                    imDead();
-                                }
-                            }
-                        }
-                        else if (type == 4)
-                        {
-                            bool dead = false;
-                            if (dashTime == line)
-                            {
-                                Console.WriteLine("||  ==|");
-                                Console.WriteLine("||   ||");
-                                Console.WriteLine("||   ||");
-                                Console.WriteLine("||   ||");
-                                Console.WriteLine("||  ====");
-                            }
-                            if (dashTime == line + wait)
-                            {
-                                Console.WriteLine(@"||  ===\");
-                                Console.WriteLine("||     ||");
-                                Console.WriteLine("||    //");
-                                Console.WriteLine("||   //");
-                                Console.WriteLine(@"||  =====");
-
-                            }
-                            if (dashTime == line + (wait * 2))
-                            {
-                                Console.WriteLine(@"||  ===\");
-                                Console.WriteLine("||     ||");
-                                Console.WriteLine("||  ===|");
-                                Console.WriteLine("||     ||");
-                                Console.WriteLine("||  ===/");
-
-                            }
-                            if (dashTime == line + ((wait * 3)))
-                            {
-
-                                Console.WriteLine(@"||  ====  ==   ==  ==    ==  ||==\\");
-                                Console.WriteLine(@"||    ||  ||   ||  |\\  //|  ||  ||");
-                                Console.WriteLine(@"||    ||  ||   ||  ||\\//||  ||==//");
-                                Console.WriteLine(@"||    ||  \\   //  || -- ||  ||");
-                                Console.WriteLine(@"||  ==//   \===/   ||    ||  ||");
-                                Thread.Sleep(milis + timeSlowRT);
-                                if (Console.KeyAvailable)
-                                {
-                                    var key = Console.ReadKey(intercept: true).Key;
-                                    if (key == ConsoleKey.R)
-                                    {
-                                        //cooldown = SpikeJump(cooldown);
-                                        SpikeJump();
-
-                                    }
-                                    else if (refreshCount > 0)
-                                    {
-                                        RefreshJump(key);
-                                    }
-                                    else
-                                    {
-                                        imDead();
-                                    }
-
-                                }
-                                else
-                                {
-                                    dead = true;
-                                }
-                                if (dead == true)
-                                {
-                                    imDead();
-                                }
-                            }
-                        }
-                    }
-
-
-                }
-
-            }
-            else
-            {
-                Console.WriteLine("Invalid input");
-                dash();
-            }
-        }
-
-        private static void RefreshJump(ConsoleKey key)
-        {
-            if (key == ConsoleKey.Spacebar)
-            {
-                Console.WriteLine(@"===");
-                Console.WriteLine(@"   ===");
-                Console.WriteLine(@">     ==");
-                Thread.Sleep(gameSpeed + timeSlowRT);
-                Console.WriteLine(@"        \\");
-                Console.WriteLine(@"----      =");
-                Console.WriteLine(@"====----   \\");
-                Console.WriteLine(@"========--- ||");
-                Thread.Sleep(gameSpeed + timeSlowRT);
-                Console.WriteLine(@"====----   //");
-                Console.WriteLine(@"----      =");
-                Console.WriteLine(@">       //");
-                Thread.Sleep(gameSpeed + timeSlowRT);
-                Console.WriteLine(@"      ==");
-                Console.WriteLine(@"   ===");
-                Console.WriteLine(@"===");
-                Console.WriteLine("Refresh consumed");
-                if (dashTime < 350)
-                {
-                    gameSpeed = (int)Math.Ceiling(gameSpeed / 2.0) + (gameSpeed / 4) + (gameSpeed / 6);
-                    milis = (int)Math.Ceiling(milis / 2.0) + (milis / 4) + (milis / 6);
-                }
-                else
-                {
-                    if (wait > 3)
-                        wait--;
-                }
-                dashScore += 1;
-                refreshCount--;
-                spikeavail = true;
-                cooldown = 0;
-            }
-            else
-            {
-                imDead();
-            }
-        }
-
-        private static void SpikeJump()
-        {
-            //private static int SpikeJump(Cooldown)
-            if (cooldown > 10)
-            {
-                Console.WriteLine(@"===");
-                Console.WriteLine(@"   ===");
-                Console.WriteLine(@">     ==");
-                Thread.Sleep(gameSpeed + timeSlowRT);
-                Console.WriteLine(@"        \\");
-                Console.WriteLine(@"----      =");
-                Console.WriteLine(@"====----   \\");
-                Console.WriteLine(@"========--- ||");
-                Thread.Sleep(gameSpeed + timeSlowRT);
-                Console.WriteLine(@"====----   //");
-                Console.WriteLine(@"----      =");
-                Console.WriteLine(@">       //");
-                Thread.Sleep(gameSpeed + timeSlowRT);
-                Console.WriteLine(@"      ==");
-                Console.WriteLine(@"   ===");
-                Console.WriteLine(@"===");
-                if (dashTime < 350)
-                {
-                    gameSpeed = (int)Math.Ceiling(gameSpeed / 2.0) + (gameSpeed / 4) + (gameSpeed / 6);
-                    milis = (int)Math.Ceiling(milis / 2.0) + (milis / 4) + (milis / 6);
-                }
-                else
-                {
-                    if (wait > 3)
-                        wait--;
-                }
-                dashScore += 1;
-                currency = currency + 5;
-                cooldown = 0;
-                spikeavail = true;
-            }
-            else
-            {
-                imDead();
-            }
-
-            //return cooldown;
-        }
-        
         private static void diceRoll()
         {
 
@@ -2390,6 +2528,7 @@ namespace @try
             }
 
         }
+        #region(nucklebones)
         private static void nuckleBones()
         {
             if (kbgameActive == false)
@@ -2581,7 +2720,16 @@ namespace @try
             }
 
         }
-
+        private static void nucklebonesVisual()
+        {
+            Console.WriteLine("_______\n|" + dice1 + "|" + dice2 + "|" + dice3 + "|");
+            Console.WriteLine("|" + dice4 + "|" + dice5 + "|" + dice6 + "|");
+            Console.WriteLine("|" + dice7 + "|" + dice8 + "|" + dice9 + "|\n-------");
+            Console.WriteLine("_______\n|" + dice10 + "|" + dice11 + "|" + dice12 + "|");
+            Console.WriteLine("|" + dice13 + "|" + dice14 + "|" + dice15 + "|");
+            Console.WriteLine("|" + dice16 + "|" + dice17 + "|" + dice18 + "|\n-------");
+        }
+        #endregion
         private static void nbp1turn(int nBnumber)
         {
             if(kbrun1 == true)
@@ -2824,14 +2972,479 @@ namespace @try
             }
         }
 
-        private static void nucklebonesVisual()
+        private static void clawMachine()
         {
-            Console.WriteLine("_______\n|" + dice1 + "|" + dice2 + "|" + dice3 + "|");
-            Console.WriteLine("|" + dice4 + "|" + dice5 + "|" + dice6 + "|");
-            Console.WriteLine("|" + dice7 + "|" + dice8 + "|" + dice9 + "|\n-------");
-            Console.WriteLine("_______\n|" + dice10 + "|" + dice11 + "|" + dice12 + "|");
-            Console.WriteLine("|" + dice13 + "|" + dice14 + "|" + dice15 + "|");
-            Console.WriteLine("|" + dice16 + "|" + dice17 + "|" + dice18 + "|\n-------");
+            Console.Clear();
+            Console.WriteLine("                                                    balance: $" + currency);
+            Console.WriteLine("Welcome to the claw machine!\nType [play] to spend $1000 and draw an item\nType [Return] to exit");
+            Console.WriteLine(@" ________________");
+            Console.WriteLine(@" ||Claw Machine||");
+            Console.WriteLine(@" |+------------+|");
+            Console.WriteLine(@" |______________|");
+            Console.WriteLine(@" ||     ||     ||");
+            Console.WriteLine(@" ||   /-||-\   ||");
+            Console.WriteLine(@" ||   | || |   ||");
+            Console.WriteLine(@" || _   __    _||");
+            Console.WriteLine(@" ||/_--/__-\_/_||");
+            Console.WriteLine(@" ||____|____|__||");
+            Console.WriteLine(@"/___[]_____\0\___\");
+            Console.WriteLine(@"|________________|");
+            Console.WriteLine(@" | _____    []  |");
+            Console.WriteLine(@" |_|___|________|");
+            string cinput = Console.ReadLine();
+            bool cmstart = false;
+            if (cinput == "play"|| cinput == "Play")
+            {
+                if (currency > 999)
+                {
+                    currency -= 1000;
+                    cmstart = true;
+                }
+                else
+                {
+                    Console.WriteLine("Insufficient ammount");
+                    Thread.Sleep(500);
+                    gambleSelect();
+                }
+            }
+            else if (cinput == "return"||cinput == "Return")
+            {
+                gambleSelect();
+            }
+            else
+            {
+                Console.WriteLine("Invalid Input");
+                Thread.Sleep(500);
+                gambleSelect();
+            }
+            if (cmstart)
+            {
+                string clawitem = "";
+                Random clawrng = new Random();
+                int clawchoice = clawrng.Next(1, 58);
+                if (clawchoice == 1 || clawchoice == 2 || clawchoice == 3 || clawchoice == 4)
+                {
+                    clawitem = pumpkin + "\npumpkin!";
+                    pumpkincount++;
+                }
+                if (clawchoice == 7 || clawchoice == 5 || clawchoice == 6 || clawchoice == 8)
+                {
+                    clawitem = candle + "\ncandle!";
+                    candlecount++;
+                }
+                if (clawchoice == 11 || clawchoice == 10 || clawchoice == 9 || clawchoice == 12)
+                {
+                    clawitem = skull + "\nskull!";
+                    skullcount++;
+                }
+                if (clawchoice == 13 || clawchoice == 14 || clawchoice == 15 || clawchoice == 16)
+                {
+                    clawitem = spider + "\nspider!";
+                    spidercount++;
+                }
+                if (clawchoice == 17 || clawchoice == 18)
+                {
+                    clawitem = rare_pumpkin + "\nrare pumpkin!!";
+                    rare_pumpkincount++;
+                }
+                if (clawchoice == 19)
+                {
+                    clawitem = exotic_pumpkin + "\nexotic pumpkin!!!";
+                    exotic_pumpkincount++;
+                }
+                if (clawchoice == 20 || clawchoice == 21 || clawchoice == 22 || clawchoice == 23)
+                {
+                    clawitem = lil_cat + "\nlil cat!";
+                    lil_catcount++;
+                }
+                if (clawchoice == 24 || clawchoice == 25 || clawchoice == 26 || clawchoice == 27)
+                {
+                    clawitem = imposter + "\nimposter!";
+                    impostercount++;
+                }
+                if (clawchoice == 28 || clawchoice == 29 || clawchoice == 30 || clawchoice == 31)
+                {
+                    clawitem = herobrine + "\nherobrine!";
+                    herobrinecount++;
+                }
+                if (clawchoice == 32 || clawchoice == 33 || clawchoice == 34 || clawchoice == 35)
+                {
+                    clawitem = spooktuber + "\nspooktuber!";
+                    spooktubercount++;
+                }
+                if (clawchoice == 36 || clawchoice == 37)
+                {
+                    clawitem = rare_cat + "\nrare cat!!";
+                    rare_catcount++;
+                }
+                if (clawchoice == 38)
+                {
+                    clawitem = exotic_cat + "\nexotic cat!!!";
+                    exotic_catcount++;
+                }
+                if (clawchoice == 39 || clawchoice == 40 || clawchoice == 41 || clawchoice == 42)
+                {
+                    clawitem = dragonegg + "\ndragon egg!";
+                    dragoneggcount++;
+                }
+                if (clawchoice == 43 || clawchoice == 44 || clawchoice == 45 || clawchoice == 46)
+                {
+                    clawitem = crystal + "\ncrystal!";
+                    crystalcount++;
+                }
+                if (clawchoice == 47 || clawchoice == 48 || clawchoice == 49 || clawchoice == 50)
+                {
+                    clawitem = potion + "\npotion!";
+                    potioncount++;
+                }
+                if (clawchoice == 51 || clawchoice == 52 || clawchoice == 53 || clawchoice == 54)
+                {
+                    clawitem = castle + "\ncastle!";
+                    spooktubercount++;
+                }
+                if (clawchoice == 55 || clawchoice == 56)
+                {
+                    clawitem = rarecastle + "\nrare castle!!";
+                    rarecastlecount++;
+                }
+                if (clawchoice == 57)
+                {
+                    clawitem = exoticcastle + "\nexotic castle!!!";
+                    exoticcastlecount++;
+                }
+                #region(claw animation)
+                Thread.Sleep(500);
+                Console.Clear();
+                Console.WriteLine(@" ________________");
+                Console.WriteLine(@" ||Claw Machine||");
+                Console.WriteLine(@" |+------------+|");
+                Console.WriteLine(@" |______________|");
+                Console.WriteLine(@" ||     ||     ||");
+                Console.WriteLine(@" ||   /-||-\   ||");
+                Console.WriteLine(@" ||   | || |   ||");
+                Console.WriteLine(@" || _   __    _||");
+                Console.WriteLine(@" ||/_--/__-\_/_||");
+                Console.WriteLine(@" ||____|____|__||");
+                Console.WriteLine(@"/___[]_____\0\___\");
+                Console.WriteLine(@"|________________|");
+                Console.WriteLine(@" | _____    []()|");
+                Console.WriteLine(@" |_|___|________|");
+                Thread.Sleep(250);
+                Console.Clear();
+                Console.WriteLine(@" ________________");
+                Console.WriteLine(@" ||Claw Machine||");
+                Console.WriteLine(@" |+------------+|");
+                Console.WriteLine(@" |______________|");
+                Console.WriteLine(@" ||     ||     ||");
+                Console.WriteLine(@" ||   /-||-\   ||");
+                Console.WriteLine(@" ||   | || |   ||");
+                Console.WriteLine(@" || _   __    _||");
+                Console.WriteLine(@" ||/_--/__-\_/_||");
+                Console.WriteLine(@" ||____|____|__||");
+                Console.WriteLine(@"/___[]_____\0\___\");
+                Console.WriteLine(@"|________________|");
+                Console.WriteLine(@" | _____    [() |");
+                Console.WriteLine(@" |_|___|________|");
+                Thread.Sleep(250);
+                Console.Clear();
+                Console.WriteLine(@" ________________");
+                Console.WriteLine(@" ||Claw Machine||");
+                Console.WriteLine(@" |+------------+|");
+                Console.WriteLine(@" |______________|");
+                Console.WriteLine(@" ||     ||     ||");
+                Console.WriteLine(@" ||   /-||-\   ||");
+                Console.WriteLine(@" ||   | || |   ||");
+                Console.WriteLine(@" || _   __    _||");
+                Console.WriteLine(@" ||/_--/__-\_/_||");
+                Console.WriteLine(@" ||____|____|__||");
+                Console.WriteLine(@"/___[]_____\0\___\");
+                Console.WriteLine(@"|________________|");
+                Console.WriteLine(@" | _____    [)  |");
+                Console.WriteLine(@" |_|___|________|");
+                Thread.Sleep(250);
+                Console.Clear();
+                Console.WriteLine(@" ________________");
+                Console.WriteLine(@" ||Claw Machine||");
+                Console.WriteLine(@" |+------------+|");
+                Console.WriteLine(@" |______________|");
+                Console.WriteLine(@" ||     ||     ||");
+                Console.WriteLine(@" ||   /-||-\   ||");
+                Console.WriteLine(@" ||   | || |   ||");
+                Console.WriteLine(@" || _   __    _||");
+                Console.WriteLine(@" ||/_--/__-\_/_||");
+                Console.WriteLine(@" ||____|____|__||");
+                Console.WriteLine(@"/___[]_____\0\___\");
+                Console.WriteLine(@"|________________|");
+                Console.WriteLine(@" | _____    []  |");
+                Console.WriteLine(@" |_|___|________|");
+                Thread.Sleep(500);
+                Console.Clear();
+                Console.WriteLine(@" ________________");
+                Console.WriteLine(@" ||Claw Machine||");
+                Console.WriteLine(@" |+------------+|");
+                Console.WriteLine(@" |______________|");
+                Console.WriteLine(@" ||     ||     ||");
+                Console.WriteLine(@" ||     ||     ||");
+                Console.WriteLine(@" ||   /-||-\   ||");
+                Console.WriteLine(@" || _ | || |  _||");
+                Console.WriteLine(@" ||/_--/__-\_/_||");
+                Console.WriteLine(@" ||____|____|__||");
+                Console.WriteLine(@"/___[]_____\0\___\");
+                Console.WriteLine(@"|________________|");
+                Console.WriteLine(@" | _____    []  |");
+                Console.WriteLine(@" |_|___|________|");
+                Thread.Sleep(250);
+                Console.Clear();
+                Console.WriteLine(@" ________________");
+                Console.WriteLine(@" ||Claw Machine||");
+                Console.WriteLine(@" |+------------+|");
+                Console.WriteLine(@" |______________|");
+                Console.WriteLine(@" ||     ||     ||");
+                Console.WriteLine(@" ||     ||     ||");
+                Console.WriteLine(@" ||     ||     ||");
+                Console.WriteLine(@" || _ /-||-\  _||");
+                Console.WriteLine(@" ||/_--/__-\_/_||");
+                Console.WriteLine(@" ||____|____|__||");
+                Console.WriteLine(@"/___[]_____\0\___\");
+                Console.WriteLine(@"|________________|");
+                Console.WriteLine(@" | _____    []  |");
+                Console.WriteLine(@" |_|___|________|");
+                Thread.Sleep(250);
+                Console.Clear();
+                Console.WriteLine(@" ________________");
+                Console.WriteLine(@" ||Claw Machine||");
+                Console.WriteLine(@" |+------------+|");
+                Console.WriteLine(@" |______________|");
+                Console.WriteLine(@" ||     ||     ||");
+                Console.WriteLine(@" ||     ||     ||");
+                Console.WriteLine(@" ||     ||     ||");
+                Console.WriteLine(@" || _   ||    _||");
+                Console.WriteLine(@" ||/_--/__-\_/_||");
+                Console.WriteLine(@" ||____|____|__||");
+                Console.WriteLine(@"/___[]_____\0\___\");
+                Console.WriteLine(@"|________________|");
+                Console.WriteLine(@" | _____    []  |");
+                Console.WriteLine(@" |_|___|________|");
+                Thread.Sleep(500);
+                Console.Clear();
+                Console.WriteLine(@" ________________");
+                Console.WriteLine(@" ||Claw Machine||");
+                Console.WriteLine(@" |+------------+|");
+                Console.WriteLine(@" |______________|");
+                Console.WriteLine(@" ||     ||     ||");
+                Console.WriteLine(@" ||     ||     ||");
+                Console.WriteLine(@" ||     ||     ||");
+                Console.WriteLine(@" || _ |-||-|  _||");
+                Console.WriteLine(@" ||/_--/__-\_/_||");
+                Console.WriteLine(@" ||____|____|__||");
+                Console.WriteLine(@"/___[]_____\0\___\");
+                Console.WriteLine(@"|________________|");
+                Console.WriteLine(@" | _____    []  |");
+                Console.WriteLine(@" |_|___|________|");
+                Thread.Sleep(250);
+                Console.Clear();
+                Console.WriteLine(@" ________________");
+                Console.WriteLine(@" ||Claw Machine||");
+                Console.WriteLine(@" |+------------+|");
+                Console.WriteLine(@" |______________|");
+                Console.WriteLine(@" ||     ||     ||");
+                Console.WriteLine(@" ||     ||     ||");
+                Console.WriteLine(@" ||   |-||-|   ||");
+                Console.WriteLine(@" || _ \/||\/  _||");
+                Console.WriteLine(@" ||/_--/__-\_/_||");
+                Console.WriteLine(@" ||____|____|__||");
+                Console.WriteLine(@"/___[]_____\0\___\");
+                Console.WriteLine(@"|________________|");
+                Console.WriteLine(@" | _____    []  |");
+                Console.WriteLine(@" |_|___|________|");
+                Thread.Sleep(250);
+                Console.Clear();
+                Console.WriteLine(@" ________________");
+                Console.WriteLine(@" ||Claw Machine||");
+                Console.WriteLine(@" |+------------+|");
+                Console.WriteLine(@" |______________|");
+                Console.WriteLine(@" ||     ||     ||");
+                Console.WriteLine(@" ||   |-||-|   ||");
+                Console.WriteLine(@" ||   \/||\/   ||");
+                Console.WriteLine(@" || _  |__|   _||");
+                Console.WriteLine(@" ||/_--/__-\_/_||");
+                Console.WriteLine(@" ||____|____|__||");
+                Console.WriteLine(@"/___[]_____\0\___\");
+                Console.WriteLine(@"|________________|");
+                Console.WriteLine(@" | _____    []  |");
+                Console.WriteLine(@" |_|___|________|");
+                Thread.Sleep(250);
+                Console.Clear();
+                Console.WriteLine(@" ________________");
+                Console.WriteLine(@" ||Claw Machine||");
+                Console.WriteLine(@" |+------------+|");
+                Console.WriteLine(@" |______________|");
+                Console.WriteLine(@" ||   |-||-|   ||");
+                Console.WriteLine(@" ||   \/||\/   ||");
+                Console.WriteLine(@" ||    |__|    ||");
+                Console.WriteLine(@" || _   __    _||");
+                Console.WriteLine(@" ||/_--/__-\_/_||");
+                Console.WriteLine(@" ||____|____|__||");
+                Console.WriteLine(@"/___[]_____\0\___\");
+                Console.WriteLine(@"|________________|");
+                Console.WriteLine(@" | _____    []  |");
+                Console.WriteLine(@" |_|___|________|");
+                Thread.Sleep(500);
+                #endregion
+                Console.WriteLine("Congrats you won a:\n" + clawitem);
+                Thread.Sleep(1000);
+                Console.WriteLine("Would you like to [play again] or [return]?");
+                cinput = Console.ReadLine();
+                if (cinput == "play again" || cinput == "Play again")
+                {
+                    clawMachine();
+                }
+                else if (cinput == "return" || cinput == "Return")
+                {
+                    gambleSelect();
+                }
+                else
+                {
+                    Console.WriteLine("Invalid Input");
+                    Thread.Sleep(500);
+                    clawMachine();
+                }
+            }
+        }
+
+        private static void itemStorage()
+        {
+            Console.Clear(); 
+            Console.WriteLine("===============IGNORE=ANY=ITEMS=ABOVE=THIS=POINT===============");
+            Console.WriteLine("Halloween set:");
+            if (pumpkincount > 0)
+                Console.WriteLine(pumpkin+"     pumpkin x"+pumpkincount);
+            if (rare_pumpkincount > 0)
+                Console.WriteLine(rare_pumpkin + "     rare pumpkin x" + rare_pumpkincount);
+            if (exotic_pumpkincount > 0)
+                Console.WriteLine(exotic_pumpkin + "     exotic pumpkin x" + exotic_pumpkincount);
+            if (skullcount > 0)
+                Console.WriteLine(skull + "     skull x" + skullcount);
+            if (candlecount > 0)
+                Console.WriteLine(candle + "     candle x" + candlecount);
+            if (spidercount > 0)
+                Console.WriteLine(spider + "     spider x" + spidercount);
+            Console.WriteLine("Game set:");
+            if (lil_catcount > 0)
+                Console.WriteLine(lil_cat + "     lil cat x" + lil_catcount);
+            if (rare_catcount > 0)
+                Console.WriteLine(rare_cat + "     rare cat x" + rare_catcount);
+            if (exotic_catcount > 0)
+                Console.WriteLine(exotic_cat + "     exotic cat x" + exotic_catcount);
+            if (spooktubercount > 0)
+                Console.WriteLine(spooktuber + "     spooktuber x" + spooktubercount);
+            if (herobrinecount > 0)
+                Console.WriteLine(herobrine + "     herobrine x" + herobrinecount);
+            if (impostercount > 0)
+                Console.WriteLine(imposter + "     imposter x" + impostercount);
+            Console.WriteLine("Mystic set:");
+            if (castlecount > 0)
+                Console.WriteLine(castle + "     castle x" + castlecount);
+            if (rarecastlecount > 0)
+                Console.WriteLine(rarecastle + "     rare castle x" + rarecastlecount);
+            if (exoticcastlecount > 0)
+                Console.WriteLine(exoticcastle + "     exotic castle x" + exoticcastlecount);
+            if (crystalcount > 0)
+                Console.WriteLine(crystal + "     crystal x" + crystalcount);
+            if (dragoneggcount > 0)
+                Console.WriteLine(dragonegg + "     dragon egg x" + dragoneggcount);
+            if (potioncount > 0)
+                Console.WriteLine(potion + "     potion x" + potioncount);
+            Console.WriteLine("\nThis is your storage, any and all items will appear here which you can sell or collect!");
+            Console.WriteLine("Type [return] to return");
+            Console.WriteLine("Common items can be sold for $350, rare items can be sold for $1,500, and exotic items can be sold for $5,000");
+            Console.WriteLine("To sell an item, simply type its name.");
+
+            string sinput = Console.ReadLine();
+
+            if (sinput == "return" || sinput == "Return")
+            {
+                option1();
+            }
+            else if (sinput == "pumpkin" && pumpkincount >0)
+            {
+                pumpkincount -= 1;
+                currency += 350;
+                itemStorage();
+            }
+            else if (sinput == "rare pumpkin" && rare_pumpkincount > 0)
+            {
+                rare_pumpkincount -= 1;
+                currency += 1500;
+                itemStorage();
+            }
+            else if (sinput == "exotic pumpkin" && exotic_pumpkincount > 0)
+            {
+                exotic_pumpkincount -= 1;
+                currency += 5000;
+                itemStorage();
+            }
+            else if (sinput == "skull" && skullcount > 0)
+            {
+                skullcount -= 1;
+                currency += 350;
+                itemStorage();
+            }
+            else if (sinput == "spider" && spidercount > 0)
+            {
+                spidercount -= 1;
+                currency += 350;
+                itemStorage();
+            }
+            else if (sinput == "candle" && candlecount > 0)
+            {
+                candlecount -= 1;
+                currency += 350;
+                itemStorage();
+            }
+            else if (sinput == "lil cat" && lil_catcount > 0)
+            {
+                lil_catcount -= 1;
+                currency += 350;
+                itemStorage();
+            }
+            else if (sinput == "rare cat" && rare_catcount > 0)
+            {
+                rare_catcount -= 1;
+                currency += 1500;
+                itemStorage();
+            }
+            else if (sinput == "exotic cat" && exotic_catcount > 0)
+            {
+                exotic_catcount -= 1;
+                currency += 5000;
+                itemStorage();
+            }
+            else if (sinput == "imposter" && impostercount > 0)
+            {
+                impostercount -= 1;
+                currency += 350;
+                itemStorage();
+            }
+            else if (sinput == "spooktuber" && spooktubercount > 0)
+            {
+                spooktubercount -= 1;
+                currency += 350;
+                itemStorage();
+            }
+            else if (sinput == "herobrine" && herobrinecount > 0)
+            {
+                herobrinecount -= 1;
+                currency += 350;
+                itemStorage();
+            }
+            else
+            {
+                Console.WriteLine("Invalid Input");
+                Thread.Sleep(500);
+                option1();
+            }
+
         }
 
         private static void drawing()
@@ -2859,10 +3472,11 @@ namespace @try
             }
             drawing();
         }
+        
+
 
 
 
 
     }
 }
-
