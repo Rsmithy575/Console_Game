@@ -4,6 +4,7 @@ using System.Diagnostics.Eventing.Reader;
 using System.Linq;
 using System.Media;
 using System.Reflection;
+using System.Runtime.CompilerServices;
 using System.Runtime.Remoting.Services;
 using System.Security.Cryptography;
 using System.Text;
@@ -64,7 +65,7 @@ namespace @try
 | / \/ \ |  
  \__UU__/";
         static int rare_pumpkincount;
-        static string exotic_pumpkin= @"
+        static string exotic_pumpkin = @"
  /=\  _||_  /=\
 / /\\/|\/|\//\ \
 VV _|| VV ||_  VV
@@ -98,7 +99,7 @@ _| (__)
 ||   |
  |_|_|";
         static int impostercount;
-        static string spooktuber=@"
+        static string spooktuber = @"
   _==_
  //--\\
 [|0 .0|]
@@ -110,20 +111,20 @@ _| (__)
 \__ __/
  ||-||";
         static int lil_catcount;
-        static string rare_cat=@"
+        static string rare_cat = @"
   |\---/|
 /=/ owo \=\
 |)\__ __/(|
 UU ||-|| UU";
         static int rare_catcount;
-        static string exotic_cat=@"
+        static string exotic_cat = @"
      I
   |\_I_/|
 /=/ 0w0 \=\
 |)\__ __/(|
 VV ||-|| VV";
         static int exotic_catcount;
-        static string herobrine=@"
+        static string herobrine = @"
  ______
 |_----_|
 |==__==|
@@ -243,13 +244,13 @@ VV ||-|| VV";
                 milis = (int)Math.Ceiling(milis / 2.0) + (milis / 4) + (milis / 5);
                 wait -= 1;
                 gameSpeed = (int)Math.Ceiling(gameSpeed / 2.0) + (gameSpeed / 4) + (gameSpeed / 5);
-                
+
                 dashScore += 1;
                 spikeavail = true;
             }
-            
+
         }
-        
+
         private static void dashScoreVoid()
         {
             if (userpowerupinput == "yes" || userpowerupinput == "Yes")
@@ -1028,7 +1029,7 @@ VV ||-|| VV";
         #region(nots and crosses)
         private static void player1(string[] NCnumbers)
         {
-           
+
             string NCinput1 = Console.ReadLine();
             int.TryParse(NCinput1, out int NCinInt);
             if (NCinput1 == "1" || NCinput1 == "2" || NCinput1 == "3" ||
@@ -1063,8 +1064,8 @@ VV ||-|| VV";
                 Console.WriteLine("Invalid input");
                 player1(NCnumbers);
             }
-                
-            
+
+
 
         }
         private static void NorC()
@@ -1254,7 +1255,7 @@ VV ||-|| VV";
         }
         private static void player2(string[] NCnumbers)
         {
-            
+
             string NCinput2 = Console.ReadLine();
             int.TryParse(NCinput2, out int NCinInt2);
             if (NCinput2 == "1" || NCinput2 == "2" || NCinput2 == "3" ||
@@ -1292,7 +1293,7 @@ VV ||-|| VV";
 
 
         }
-#endregion
+        #endregion
         private static void option1()
         {
             Console.ForegroundColor = ConsoleColor.Yellow;
@@ -1354,7 +1355,7 @@ VV ||-|| VV";
             //    Console.Clear();
             //    Console.Write("What would you like to change your password to?: ");
             //    password = Console.ReadLine();
-                
+
             //    Console.WriteLine("Password changed to, " + password);
             //    option1();
             //}
@@ -1440,7 +1441,7 @@ VV ||-|| VV";
                 Thread.Sleep(1000);
                 gambleSelect();
             }
-            
+
 
         }
 
@@ -1452,7 +1453,7 @@ VV ||-|| VV";
             int betNumInt;
             bool success = int.TryParse(betopt, out betNumInt);
 
-            if (success && !(betNumInt > currency))
+            if (success && !(betNumInt > currency) && betNumInt > 0)
             {
                 Console.WriteLine("you bet " + betNumInt + " dollars");
                 currency = currency - betNumInt;
@@ -1476,7 +1477,7 @@ VV ||-|| VV";
                 var key = Console.ReadKey(intercept: true).Key;
                 if (key == ConsoleKey.Enter)
                 {
-                    
+
                     bulletpullint = bulletpull.Next(1, (bullets + 1));
                     bullets -= 1;
                     if (bulletpullint == 1)
@@ -1506,7 +1507,7 @@ VV ||-|| VV";
                     {
                         Console.Clear();
                         Console.WriteLine("You survive this shot, its the oponents turn");
-                        
+
                         Thread.Sleep(2000);
                         Console.Clear();
                         Console.WriteLine("oponent playing");
@@ -1588,7 +1589,7 @@ VV ||-|| VV";
             int betNumInt;
             bool success = int.TryParse(betopt, out betNumInt);
 
-            if (success && !(betNumInt > currency))
+            if (success && !(betNumInt > currency) && betNumInt > 0)
             {
                 Console.WriteLine("you bet " + betNumInt + " dollars");
                 currency = currency - betNumInt;
@@ -1796,18 +1797,18 @@ VV ||-|| VV";
 
             if (rtnumber == tableNumInt)
             {
-                    Console.Clear();
-                    Console.WriteLine("It landed on your number! CONGRATS YOU WON!");
-                    Console.WriteLine("Your balance changed from " + currency + " to " + (currency +(betNumInt* 5)) + "!");
-                    currency = currency+(betNumInt * 5);
-                    Thread.Sleep(2000);
+                Console.Clear();
+                Console.WriteLine("It landed on your number! CONGRATS YOU WON!");
+                Console.WriteLine("Your balance changed from " + currency + " to " + (currency + (betNumInt * 5)) + "!");
+                currency = currency + (betNumInt * 5);
+                Thread.Sleep(2000);
             }
             else
             {
-                    Console.WriteLine("You didnt win sadly, it landed on "+rtnumber+". Goodluck next time!");
-                    Thread.Sleep(2000);
+                Console.WriteLine("You didnt win sadly, it landed on " + rtnumber + ". Goodluck next time!");
+                Thread.Sleep(2000);
             }
-            
+
             Console.Write("[Play again] or [Return]?: ");
             string rbpR = Console.ReadLine();
             if (rbpR == "Play again" || rbpR == "play again")
@@ -1833,9 +1834,9 @@ VV ||-|| VV";
             int betNumInt;
             bool success = int.TryParse(betopt, out betNumInt);
 
-            if (success && !(betNumInt > currency))
+            if (success && !(betNumInt > currency) && betNumInt > 0)
             {
-                Console.WriteLine("you bet "+betNumInt+" dollars");
+                Console.WriteLine("you bet " + betNumInt + " dollars");
                 currency = currency - betNumInt;
             }
             else
@@ -1853,7 +1854,7 @@ VV ||-|| VV";
             }
             else if (betopt == "black")
             {
-                redbet=false;
+                redbet = false;
             }
             else
             {
@@ -2095,7 +2096,7 @@ VV ||-|| VV";
             Console.WriteLine("Welcome to slots!\nHere you can pay $100 to pull the slot machine and try your luck for a jackpot!\nGetting two numbers the name gives you a prize of $350!\nGetting all numbers the same awards you with $5000!!");
             Console.WriteLine("Would you like to [Play] or [Return]?");
 
-            
+
             string smrR = Console.ReadLine();
             if (smrR == "Return" || smrR == "return")
             {
@@ -2285,7 +2286,7 @@ VV ||-|| VV";
                 Console.Clear();
                 slotvisual(slotnumber1, slotnumber2, slotnumber3);
                 Thread.Sleep(150);
-                if (slot1==false)
+                if (slot1 == false)
                     slotnumber1 = 7;
                 if (slot2 == false)
                     slotnumber2 = 6;
@@ -2350,7 +2351,7 @@ VV ||-|| VV";
             }
 
         }
-        
+
         private static void slotvisual(int slotnumber1, int slotnumber2, int slotnumber3)
         {
             Console.WriteLine(@"  ____-----____");
@@ -2366,7 +2367,7 @@ VV ||-|| VV";
             Console.WriteLine(@" |    _____    |");
             Console.WriteLine(@" |____|___|____|");
         }
-#endregion
+        #endregion
         private static void gameSelect(string todo)
         {
             Console.ForegroundColor = ConsoleColor.Cyan;
@@ -2396,7 +2397,7 @@ VV ||-|| VV";
             }
             else if (game == "4")
             {
-               diceRoll();
+                diceRoll();
             }
             else if (game == "5")
             {
@@ -2422,7 +2423,7 @@ VV ||-|| VV";
             int.TryParse(maxNumber, out int maxNumberInt);
             string usernumber = Console.ReadLine();
             Random PANrng = new Random();
-            int PANnumber = PANrng.Next(1, maxNumberInt+1);
+            int PANnumber = PANrng.Next(1, maxNumberInt + 1);
             string PANasString = PANnumber.ToString();
             if (usernumber == PANasString)
             {
@@ -2436,11 +2437,11 @@ VV ||-|| VV";
 
             Console.Write("[Play again] or [Return]?: ");
             string aOrR = Console.ReadLine();
-            if (aOrR == "Play again"|| aOrR == "play again")
+            if (aOrR == "Play again" || aOrR == "play again")
             {
                 PANgame();
             }
-            else if (aOrR == "Return"|| aOrR == "return")
+            else if (aOrR == "Return" || aOrR == "return")
             {
                 option1();
             }
@@ -2460,7 +2461,7 @@ VV ||-|| VV";
             //Console.Readline: Allows the user to input text into the console
             // while(!int): if the user inputs anything other than a number
             //Console.Write: Prints the text "Select a number" to the console
-
+            Console.Clear();
             Console.Write("How many sides do you want the dice to have?: ");
             while (!int.TryParse(Console.ReadLine(), out maxDiceNumber))
             {
@@ -2732,7 +2733,7 @@ VV ||-|| VV";
         #endregion
         private static void nbp1turn(int nBnumber)
         {
-            if(kbrun1 == true)
+            if (kbrun1 == true)
             {
                 Console.WriteLine("Player1's turn, click [enter] to roll");
                 var key = Console.ReadKey(intercept: true).Key;
@@ -2751,7 +2752,7 @@ VV ||-|| VV";
             {
                 Console.WriteLine("What space would you like to put it? (1-3)");
             }
-            
+
 
             string nBstring = nBnumber.ToString();
             var key2 = Console.ReadKey(intercept: true).Key;
@@ -2993,7 +2994,7 @@ VV ||-|| VV";
             Console.WriteLine(@" |_|___|________|");
             string cinput = Console.ReadLine();
             bool cmstart = false;
-            if (cinput == "play"|| cinput == "Play")
+            if (cinput == "play" || cinput == "Play")
             {
                 if (currency > 999)
                 {
@@ -3007,7 +3008,7 @@ VV ||-|| VV";
                     gambleSelect();
                 }
             }
-            else if (cinput == "return"||cinput == "Return")
+            else if (cinput == "return" || cinput == "Return")
             {
                 gambleSelect();
             }
@@ -3314,11 +3315,11 @@ VV ||-|| VV";
 
         private static void itemStorage()
         {
-            Console.Clear(); 
+            Console.Clear();
             Console.WriteLine("===============IGNORE=ANY=ITEMS=ABOVE=THIS=POINT===============");
             Console.WriteLine("Halloween set:");
             if (pumpkincount > 0)
-                Console.WriteLine(pumpkin+"     pumpkin x"+pumpkincount);
+                Console.WriteLine(pumpkin + "     pumpkin x" + pumpkincount);
             if (rare_pumpkincount > 0)
                 Console.WriteLine(rare_pumpkin + "     rare pumpkin x" + rare_pumpkincount);
             if (exotic_pumpkincount > 0)
@@ -3366,7 +3367,7 @@ VV ||-|| VV";
             {
                 option1();
             }
-            else if (sinput == "pumpkin" && pumpkincount >0)
+            else if (sinput == "pumpkin" && pumpkincount > 0)
             {
                 pumpkincount -= 1;
                 currency += 350;
@@ -3438,6 +3439,42 @@ VV ||-|| VV";
                 currency += 350;
                 itemStorage();
             }
+            else if (sinput == "dragon egg" && dragoneggcount > 0)
+            {
+                dragoneggcount -= 1;
+                currency += 350;
+                itemStorage();
+            }
+            else if (sinput == "crystal" && crystalcount > 0)
+            {
+                crystalcount -= 1;
+                currency += 350;
+                itemStorage();
+            }
+            else if (sinput == "potion" && potioncount > 0)
+            {
+                potioncount -= 1;
+                currency += 350;
+                itemStorage();
+            }
+            else if (sinput == "castle" && castlecount > 0)
+            {
+                castlecount -= 1;
+                currency += 350;
+                itemStorage();
+            }
+            else if (sinput == "rare castle" && rarecastlecount > 0)
+            {
+                rarecastlecount -= 1;
+                currency += 1500;
+                itemStorage();
+            }
+            else if (sinput == "exotic castle" && exoticcastlecount > 0)
+            {
+                exoticcastlecount -= 1;
+                currency += 5000;
+                itemStorage();
+            }
             else
             {
                 Console.WriteLine("Invalid Input");
@@ -3450,7 +3487,7 @@ VV ||-|| VV";
         private static void drawing()
         {
             Console.Clear();
-                Console.WriteLine("Type each line of your drawing and click [enter] to lock it in.\nClick 1 to finish drawing.\nClick 2 to reset.\nClick 3 to erase last line");
+            Console.WriteLine("Type each line of your drawing and click [enter] to lock it in.\nClick 1 to finish drawing.\nClick 2 to reset.\nClick 3 to erase last line");
             Console.WriteLine(userDrawing);
             drawuserinput = Console.ReadLine();
             if (drawuserinput == "1")
@@ -3472,11 +3509,8 @@ VV ||-|| VV";
             }
             drawing();
         }
-        
-
-
-
 
 
     }
 }
+//f6uffyifylkifyfiylclyi
