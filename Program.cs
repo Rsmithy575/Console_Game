@@ -10,6 +10,8 @@ using System.Security.Cryptography;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
+using System.Web;
+using System.Xml.Linq;
 using static System.Net.Mime.MediaTypeNames;
 
 namespace @try
@@ -2378,7 +2380,8 @@ VV ||-|| VV";
             Console.WriteLine("3. Dash (you should try this, its a custom game i made from scratch)");
             Console.WriteLine("4. Dice roll");
             Console.WriteLine("5. Nucklebones");
-            Console.WriteLine("6. Return");
+            Console.WriteLine("6. Hangman");
+            Console.WriteLine("7. Return");
 
             string game = Console.ReadLine();
 
@@ -2404,6 +2407,10 @@ VV ||-|| VV";
                 nuckleBones();
             }
             else if (game == "6")
+            {
+                hangman();
+            }
+            else if (game == "7")
             {
                 option1();
             }
@@ -3511,6 +3518,226 @@ VV ||-|| VV";
         }
 
 
+
+
+
+
+
+        private static void hangman()
+        {
+            string hm1 = @"
+
+              ||
+              ||
+              ||
+              ||
+              ||
+              ||
+              ||
+              ||
+              ||
+              ||
+              ||
+              ||
+             /||\
+            //||\\";
+            string hm2 = @"
+              =============#=
+              ||
+              ||
+              ||
+              ||
+              ||
+              ||
+              ||
+              ||
+              ||
+              ||
+              ||
+              ||
+             /||\
+            //||\\";
+            string hm3 = @"
+              =============#=
+              ||          [|]
+              ||           |
+              ||           |
+              ||          ---
+              ||         |   |
+              ||          -+-
+              ||
+              ||
+              ||
+              ||
+              ||
+              ||
+             /||\
+            //||\\";
+            string hm4 = @"
+              =============#=
+              ||          [|]
+              ||           |
+              ||           |
+              ||          ---
+              ||         |   |
+              ||          -+-
+              ||           |
+              ||           |
+              ||           |
+              ||
+              ||
+              ||
+             /||\
+            //||\\";
+            string hm5 = @"
+              =============#=
+              ||          [|]
+              ||           |
+              ||           |
+              ||          ---
+              ||         |   |
+              ||          -+-
+              ||          /|
+              ||         / |
+              ||           |
+              ||
+              ||
+              ||
+             /||\
+            //||\\";
+            string hm6 = @"
+              =============#=
+              ||          [|]
+              ||           |
+              ||           |
+              ||          ---
+              ||         |   |
+              ||          -+-
+              ||          /|\
+              ||         / | \
+              ||           |
+              ||
+              ||
+              ||
+             /||\
+            //||\\";
+            string hm7 = @"
+              =============#=
+              ||          [|]
+              ||           |
+              ||           |
+              ||          ---
+              ||         |   |
+              ||          -+-
+              ||          /|\
+              ||         / | \
+              ||           |
+              ||          /
+              ||         /
+              ||
+             /||\
+            //||\\";
+            string hm8 = @"
+              =============#=
+              ||          [|]
+              ||           |
+              ||           |
+              ||          ---
+              ||         |   |
+              ||          -+-
+              ||          /|\
+              ||         / | \
+              ||           |
+              ||          / \
+              ||         /   \
+              ||
+             /||\
+            //||\\";
+            string wordToGuess = "";
+            Random hmRan = new Random();
+            int hmWord = hmRan.Next(1, 7);
+            switch (hmWord)
+            {
+                case 1: wordToGuess = "viscosity"; break;
+                case 2: wordToGuess = "pineapple"; break;
+                case 3: wordToGuess = "luminesence"; break;
+                case 4: wordToGuess = "carnival"; break;
+                case 5: wordToGuess = "equivalent"; break;
+                case 6: wordToGuess = "quantity"; break;
+                case 7: wordToGuess = "oobleck"; break;
+            }
+                string letterDashes = new string('_', wordToGuess.Length);
+                int hmlives = 8;
+
+                while (hmlives > 0 && letterDashes.Contains("_"))
+                {
+                    Console.Clear();
+                    switch(hmlives)
+                    {
+                        case 8: Console.WriteLine(hm1); break;
+                        case 7: Console.WriteLine(hm2); break;
+                        case 6: Console.WriteLine(hm3); break;
+                        case 5: Console.WriteLine(hm4); break;
+                        case 4: Console.WriteLine(hm5); break;
+                        case 3: Console.WriteLine(hm6); break;
+                        case 2: Console.WriteLine(hm7); break;
+                        case 1: Console.WriteLine(hm8); break;
+                    }
+                    Console.WriteLine("Current word: " + letterDashes);
+                    Console.Write("Guess a letter: ");
+                    char guess = Console.ReadLine()[0];
+
+                    if (wordToGuess.Contains(guess))
+                    {
+                        for (int i = 0; i < wordToGuess.Length; i++)
+                        {
+                            if (wordToGuess[i] == guess)
+                            {
+                                letterDashes = letterDashes.Remove(i, 1).Insert(i, guess.ToString());
+                            }
+                        }
+                        Console.WriteLine("Good guess!");
+                    }
+                    else
+                    {
+                        hmlives--;
+                        Console.WriteLine("Wrong guess! Try again.");
+                    }
+                }
+
+                if (!letterDashes.Contains("_"))
+                {
+                    Console.WriteLine("Congratulations! You've guessed the word: " + wordToGuess);
+                    Thread.Sleep(2000);
+                }
+                else
+                {
+                    Console.WriteLine("Game over! The word was: " + wordToGuess);
+                    Thread.Sleep(2000);
+                }
+            Console.Write("[Play again] or [Return]?: ");
+            string hmrR = Console.ReadLine();
+            if (hmrR == "Play again" || hmrR == "play again")
+            {
+                hangman();
+            }
+            else if (hmrR == "Return" || hmrR == "return")
+            {
+                option1();
+            }
+            else
+            {
+                Console.WriteLine("Invalid input");
+                Thread.Sleep(1000);
+                option1();
+            }
+
+        }
+
     }
 }
-//f6uffyifylkifyfiylclyi
+
+
+
+
+//
