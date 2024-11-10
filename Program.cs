@@ -3655,18 +3655,37 @@ VV ||-|| VV";
             //||\\";
             string wordToGuess = "";
             Random hmRan = new Random();
-            int hmWord = hmRan.Next(1, 7);
+            int hmWord = hmRan.Next(1, 26);
             switch (hmWord)
             {
                 case 1: wordToGuess = "viscosity"; break;
                 case 2: wordToGuess = "pineapple"; break;
-                case 3: wordToGuess = "luminesence"; break;
+                case 3: wordToGuess = "luminescence"; break;
                 case 4: wordToGuess = "carnival"; break;
                 case 5: wordToGuess = "equivalent"; break;
                 case 6: wordToGuess = "quantity"; break;
                 case 7: wordToGuess = "oobleck"; break;
+                case 8: wordToGuess = "francis"; break;
+                case 9: wordToGuess = "corrugation"; break;
+                case 10: wordToGuess = "analysis"; break;
+                case 11: wordToGuess = "rhythm"; break;
+                case 12: wordToGuess = "jazzy"; break;
+                case 13: wordToGuess = "queue"; break;
+                case 14: wordToGuess = "galaxy"; break;
+                case 15: wordToGuess = "interstellar"; break;
+                case 16: wordToGuess = "mountain"; break;
+                case 17: wordToGuess = "elephant"; break;
+                case 18: wordToGuess = "butterfly"; break;
+                case 19: wordToGuess = "chocolate"; break;
+                case 20: wordToGuess = "sandwich"; break;
+                case 21: wordToGuess = "umbrella"; break;
+                case 22: wordToGuess = "kangaroo"; break;
+                case 23: wordToGuess = "dolphin"; break;
+                case 24: wordToGuess = "sunflower"; break;
+                case 25: wordToGuess = "rainbow"; break;
             }
-                string letterDashes = new string('_', wordToGuess.Length);
+
+            string letterDashes = new string('_', wordToGuess.Length);
                 int hmlives = 8;
 
                 while (hmlives > 0 && letterDashes.Contains("_"))
@@ -3740,4 +3759,4 @@ VV ||-|| VV";
 
 
 
-//
+//qdqwfm;nkl
