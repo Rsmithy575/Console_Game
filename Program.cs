@@ -54,6 +54,8 @@ namespace @try
         static string drawlinebefore = "";
         static int currency = 10000;
 
+        static List<string> savedPictures = new List<string>();
+
         #region(halloween set)
         static string pumpkin = @"
   _||_  
@@ -1026,6 +1028,8 @@ VV ||-|| VV";
             //    Console.WriteLine("Access Denied");
             //    Script();
             //}
+            Console.WriteLine("Welcome,");
+            Thread.Sleep(1500);
             option1();
         }
         #region(nots and crosses)
@@ -1301,7 +1305,7 @@ VV ||-|| VV";
             Console.ForegroundColor = ConsoleColor.Yellow;
             Console.Clear();
             Console.WriteLine("                                                    balance: $" + currency);
-            Console.WriteLine("what would you like to do?");
+            Console.WriteLine("what would you like to do?\n(Enter the corresponding number)");
             //Console.WriteLine("1. Change password");
             //Console.WriteLine("2. Log out");
             Console.WriteLine("3. Open images");
@@ -1317,35 +1321,7 @@ VV ||-|| VV";
             }
             else if (todo == "3")
             {
-                Console.Clear();
-                Console.WriteLine("Two images present:\n ");
-                Console.WriteLine("________________");
-                Console.WriteLine("|              |");
-                Console.WriteLine("|   ___        |");
-                Console.WriteLine("| [|(_)|=>_I_  |");
-                Console.WriteLine("|  |_-_| |_-_| | ");
-                Console.WriteLine("|              |");
-                Console.WriteLine("----------------\n");
-
-                Console.WriteLine(@" ------------");
-                Console.WriteLine(@"|   __--__   |");
-                Console.WriteLine(@"|  |      |  |");
-                Console.WriteLine(@"| | ()  () | |");
-                Console.WriteLine(@"|  |  uu  |  |");
-                Console.WriteLine(@"|   --__--   |");
-                Console.WriteLine(@" ------------");
-
-
-                Console.WriteLine("Return ?");
-                string imgreturn = Console.ReadLine();
-                if (imgreturn == "Return")
-                {
-                    option1();
-                }
-                else
-                {
-                    option1();
-                }
+                Images();
             }
             //else if (todo == "2")
             //{
@@ -1379,6 +1355,33 @@ VV ||-|| VV";
                 option1();
             }
 
+        }
+
+        private static void Images()
+        {
+            Console.Clear();
+            Console.WriteLine("Images present:\n ");
+            if (savedPictures.Count > 0)
+            {
+                foreach (string pic in savedPictures)
+                {
+                    Console.WriteLine(pic);
+                }
+            }
+            else
+                Console.WriteLine("There are no images present, make some in 5. Draw!");
+
+            Console.WriteLine("\nType [Clear] to remove all images, or type anything else to return.");
+            string imgreturn = Console.ReadLine();
+            if (imgreturn == "Clear" || imgreturn == "clear")
+            {
+                savedPictures.Clear();
+                Images();
+            }
+            else
+            {
+                option1();
+            }
         }
 
         #region(gambling)
@@ -1475,17 +1478,108 @@ VV ||-|| VV";
             int bulletpullint;
             while (rrgameactive == true)
             {
+                if (bullets == 6)
+                {
+                    Console.WriteLine(@"     __ __");
+                    Console.WriteLine(@"   _]()¯()[_");
+                    Console.WriteLine(@"  =|() H ()|");
+                    Console.WriteLine(@"   ¯]()_()[¯");
+                    Console.WriteLine(@"     ¯¯ ¯¯");
+                }
+                
                 Console.WriteLine("pull the trigger by pressing [enter]");
                 var key = Console.ReadKey(intercept: true).Key;
                 if (key == ConsoleKey.Enter)
                 {
-
+                    
                     bulletpullint = bulletpull.Next(1, (bullets + 1));
                     bullets -= 1;
+                    #region(bulletanim)
+                    Console.Clear();
+                    if (bullets == 5)
+                    {
+                        Console.WriteLine(@"     __ __");
+                        Console.WriteLine(@"   _]()¯()[_");
+                        Console.WriteLine(@"  =|[] H ()|");
+                        Console.WriteLine(@"   ¯]()_()[¯");
+                        Console.WriteLine(@"     ¯¯ ¯¯");
+                        Thread.Sleep(500);
+                        Console.Clear();
+                        Console.WriteLine(@"     __ __");
+                        Console.WriteLine(@"   _][]¯()[_");
+                        Console.WriteLine(@"  =|() H ()|");
+                        Console.WriteLine(@"   ¯]()_()[¯");
+                        Console.WriteLine(@"     ¯¯ ¯¯");
+
+                    }
+                    else if (bullets == 4)
+                    {
+                        Console.WriteLine("     __ __");
+                        Console.WriteLine("   _][]¯()[_");
+                        Console.WriteLine("  =|[] H ()|");
+                        Console.WriteLine("   ¯]()_()[¯");
+                        Console.WriteLine("     ¯¯ ¯¯");
+                        Thread.Sleep(500);
+                        Console.Clear();
+                        Console.WriteLine("     __ __");
+                        Console.WriteLine("   _][]¯[][_");
+                        Console.WriteLine("  =|() H ()|");
+                        Console.WriteLine("   ¯]()_()[¯");
+                        Console.WriteLine("     ¯¯ ¯¯");
+
+                    }
+                    else if (bullets == 3)
+                    {
+                        Console.WriteLine("     __ __");
+                        Console.WriteLine("   _][]¯[][_");
+                        Console.WriteLine("  =|[] H ()|");
+                        Console.WriteLine("   ¯]()_()[¯");
+                        Console.WriteLine("     ¯¯ ¯¯");
+                        Thread.Sleep(500);
+                        Console.Clear();
+                        Console.WriteLine("     __ __");
+                        Console.WriteLine("   _][]¯[][_");
+                        Console.WriteLine("  =|() H []|");
+                        Console.WriteLine("   ¯]()_()[¯");
+                        Console.WriteLine("     ¯¯ ¯¯");
+
+                    }
+                    else if (bullets == 2)
+                    {
+                        Console.WriteLine("     __ __");
+                        Console.WriteLine("   _][]¯[][_");
+                        Console.WriteLine("  =|[] H []|");
+                        Console.WriteLine("   ¯]()_()[¯");
+                        Console.WriteLine("     ¯¯ ¯¯");
+                        Thread.Sleep(500);
+                        Console.Clear();
+                        Console.WriteLine("     __ __");
+                        Console.WriteLine("   _][]¯[][_");
+                        Console.WriteLine("  =|() H []|");
+                        Console.WriteLine("   ¯]()_[][¯");
+                        Console.WriteLine("     ¯¯ ¯¯");
+
+                    }
+                    else if (bullets == 1)
+                    {
+                        Console.WriteLine("     __ __");
+                        Console.WriteLine("   _][]¯[][_");
+                        Console.WriteLine("  =|[] H []|");
+                        Console.WriteLine("   ¯]()_[][¯");
+                        Console.WriteLine("     ¯¯ ¯¯");
+                        Thread.Sleep(500);
+                        Console.Clear();
+                        Console.WriteLine("     __ __");
+                        Console.WriteLine("   _][]¯[][_");
+                        Console.WriteLine("  =|() H []|");
+                        Console.WriteLine("   ¯][]_[][¯");
+                        Console.WriteLine("     ¯¯ ¯¯");
+                    }
+                    Thread.Sleep(500);
+                    #endregion
                     if (bulletpullint == 1)
                     {
                         rrgameactive = false;
-                        Console.Clear();
                         Console.WriteLine("Oh no you shot your bet, better luck next time!");
                         Thread.Sleep(1000);
                         Console.Write("[Play again] or [Return]?: ");
@@ -1524,8 +1618,92 @@ VV ||-|| VV";
                         Console.WriteLine("oponent playing...");
                         Thread.Sleep(500);
                         Console.Clear();
+                        
+                      
                         bulletpullint = bulletpull.Next(1, (bullets + 1));
                         bullets -= 1;
+                        #region(bulletanim)
+                        if (bullets == 5)
+                        {
+                            Console.WriteLine(@"     __ __");
+                            Console.WriteLine(@"   _]()¯()[_");
+                            Console.WriteLine(@"  =|[] H ()|");
+                            Console.WriteLine(@"   ¯]()_()[¯");
+                            Console.WriteLine(@"     ¯¯ ¯¯");
+                            Thread.Sleep(500);
+                            Console.Clear();
+                            Console.WriteLine(@"     __ __");
+                            Console.WriteLine(@"   _][]¯()[_");
+                            Console.WriteLine(@"  =|() H ()|");
+                            Console.WriteLine(@"   ¯]()_()[¯");
+                            Console.WriteLine(@"     ¯¯ ¯¯");
+
+                        }
+                        else if (bullets == 4)
+                        {
+                            Console.WriteLine("     __ __");
+                            Console.WriteLine("   _][]¯()[_");
+                            Console.WriteLine("  =|[] H ()|");
+                            Console.WriteLine("   ¯]()_()[¯");
+                            Console.WriteLine("     ¯¯ ¯¯");
+                            Thread.Sleep(500);
+                            Console.Clear();
+                            Console.WriteLine("     __ __");
+                            Console.WriteLine("   _][]¯[][_");
+                            Console.WriteLine("  =|() H ()|");
+                            Console.WriteLine("   ¯]()_()[¯");
+                            Console.WriteLine("     ¯¯ ¯¯");
+
+                        }
+                        else if (bullets == 3)
+                        {
+                            Console.WriteLine("     __ __");
+                            Console.WriteLine("   _][]¯[][_");
+                            Console.WriteLine("  =|[] H ()|");
+                            Console.WriteLine("   ¯]()_()[¯");
+                            Console.WriteLine("     ¯¯ ¯¯");
+                            Thread.Sleep(500);
+                            Console.Clear();
+                            Console.WriteLine("     __ __");
+                            Console.WriteLine("   _][]¯[][_");
+                            Console.WriteLine("  =|() H []|");
+                            Console.WriteLine("   ¯]()_()[¯");
+                            Console.WriteLine("     ¯¯ ¯¯");
+
+                        }
+                        else if (bullets == 2)
+                        {
+                            Console.WriteLine("     __ __");
+                            Console.WriteLine("   _][]¯[][_");
+                            Console.WriteLine("  =|[] H []|");
+                            Console.WriteLine("   ¯]()_()[¯");
+                            Console.WriteLine("     ¯¯ ¯¯");
+                            Thread.Sleep(500);
+                            Console.Clear();
+                            Console.WriteLine("     __ __");
+                            Console.WriteLine("   _][]¯[][_");
+                            Console.WriteLine("  =|() H []|");
+                            Console.WriteLine("   ¯]()_[][¯");
+                            Console.WriteLine("     ¯¯ ¯¯");
+
+                        }
+                        else if (bullets == 1)
+                        {
+                            Console.WriteLine("     __ __");
+                            Console.WriteLine("   _][]¯[][_");
+                            Console.WriteLine("  =|[] H []|");
+                            Console.WriteLine("   ¯]()_[][¯");
+                            Console.WriteLine("     ¯¯ ¯¯");
+                            Thread.Sleep(500);
+                            Console.Clear();
+                            Console.WriteLine("     __ __");
+                            Console.WriteLine("   _][]¯[][_");
+                            Console.WriteLine("  =|() H []|");
+                            Console.WriteLine("   ¯][]_[][¯");
+                            Console.WriteLine("     ¯¯ ¯¯");
+                        }
+                        Thread.Sleep(500);
+                        #endregion
                         if (bulletpullint == 1)
                         {
                             Console.WriteLine("Oponent survived this shot, its your turn");
@@ -2374,7 +2552,7 @@ VV ||-|| VV";
         {
             Console.ForegroundColor = ConsoleColor.Cyan;
             Console.Clear();
-            Console.WriteLine("What game would you like to play?");
+            Console.WriteLine("What game would you like to play?\n(Enter the corresponding number to play)");
             Console.WriteLine("1. Guess the number");
             Console.WriteLine("2. Noughts and crosses");
             Console.WriteLine("3. Dash (you should try this, its a custom game i made from scratch)");
@@ -2460,7 +2638,7 @@ VV ||-|| VV";
             }
 
         }
-
+        
         private static void diceRoll()
         {
 
@@ -3324,6 +3502,7 @@ VV ||-|| VV";
         {
             Console.Clear();
             Console.WriteLine("===============IGNORE=ANY=ITEMS=ABOVE=THIS=POINT===============");
+            Console.WriteLine("Your items: \n");
             Console.WriteLine("Halloween set:");
             if (pumpkincount > 0)
                 Console.WriteLine(pumpkin + "     pumpkin x" + pumpkincount);
@@ -3499,6 +3678,12 @@ VV ||-|| VV";
             drawuserinput = Console.ReadLine();
             if (drawuserinput == "1")
             {
+                if (userDrawing != "")
+                {
+                    savedPictures.Add(userDrawing);
+                    userDrawing = "";
+                }
+
                 option1();
             }
             else if (drawuserinput == "2")
@@ -3517,14 +3702,9 @@ VV ||-|| VV";
             drawing();
         }
 
-
-
-
-
-
-
         private static void hangman()
         {
+            string letterGuesses = "";
             string hm1 = @"
 
               ||
@@ -3686,54 +3866,56 @@ VV ||-|| VV";
             }
 
             string letterDashes = new string('_', wordToGuess.Length);
-                int hmlives = 8;
+            int hmlives = 8;
 
-                while (hmlives > 0 && letterDashes.Contains("_"))
+            while (hmlives > 0 && letterDashes.Contains("_"))
+            {
+                Console.Clear();
+                switch (hmlives)
                 {
-                    Console.Clear();
-                    switch(hmlives)
-                    {
-                        case 8: Console.WriteLine(hm1); break;
-                        case 7: Console.WriteLine(hm2); break;
-                        case 6: Console.WriteLine(hm3); break;
-                        case 5: Console.WriteLine(hm4); break;
-                        case 4: Console.WriteLine(hm5); break;
-                        case 3: Console.WriteLine(hm6); break;
-                        case 2: Console.WriteLine(hm7); break;
-                        case 1: Console.WriteLine(hm8); break;
-                    }
-                    Console.WriteLine("Current word: " + letterDashes);
-                    Console.Write("Guess a letter: ");
-                    char guess = Console.ReadLine()[0];
-
-                    if (wordToGuess.Contains(guess))
-                    {
-                        for (int i = 0; i < wordToGuess.Length; i++)
-                        {
-                            if (wordToGuess[i] == guess)
-                            {
-                                letterDashes = letterDashes.Remove(i, 1).Insert(i, guess.ToString());
-                            }
-                        }
-                        Console.WriteLine("Good guess!");
-                    }
-                    else
-                    {
-                        hmlives--;
-                        Console.WriteLine("Wrong guess! Try again.");
-                    }
+                    case 8: Console.WriteLine(hm1); break;
+                    case 7: Console.WriteLine(hm2); break;
+                    case 6: Console.WriteLine(hm3); break;
+                    case 5: Console.WriteLine(hm4); break;
+                    case 4: Console.WriteLine(hm5); break;
+                    case 3: Console.WriteLine(hm6); break;
+                    case 2: Console.WriteLine(hm7); break;
+                    case 1: Console.WriteLine(hm8); break;
                 }
-
-                if (!letterDashes.Contains("_"))
+                Console.WriteLine("Already guesssed: " + letterGuesses);
+                Console.WriteLine("Current word: " + letterDashes);
+                Console.Write("Guess a letter:");
+                char guess = Console.ReadLine()[0];
+                letterGuesses = letterGuesses + " " + guess;
+                if (wordToGuess.Contains(guess))
                 {
-                    Console.WriteLine("Congratulations! You've guessed the word: " + wordToGuess);
-                    Thread.Sleep(2000);
+                    for (int i = 0; i < wordToGuess.Length; i++)
+                    {
+                        if (wordToGuess[i] == guess)
+                        {
+                            letterDashes = letterDashes.Remove(i, 1).Insert(i, guess.ToString());
+                        }
+                    }
+                    Console.WriteLine("Good guess!");
                 }
                 else
                 {
-                    Console.WriteLine("Game over! The word was: " + wordToGuess);
-                    Thread.Sleep(2000);
+                    hmlives--;
+                    Console.WriteLine("Wrong guess! Try again.");
                 }
+            }
+
+            if (!letterDashes.Contains("_"))
+            {
+                Console.WriteLine("Congratulations! You've guessed the word: " + wordToGuess + "\n+$15");
+                currency += 15;
+                Thread.Sleep(2000);
+            }
+            else
+            {
+                Console.WriteLine("Game over! The word was: " + wordToGuess);
+                Thread.Sleep(2000);
+            }
             Console.Write("[Play again] or [Return]?: ");
             string hmrR = Console.ReadLine();
             if (hmrR == "Play again" || hmrR == "play again")
@@ -3752,11 +3934,6 @@ VV ||-|| VV";
             }
 
         }
-
     }
 }
-
-
-
-
-//qdqwfm;nkl
+//
